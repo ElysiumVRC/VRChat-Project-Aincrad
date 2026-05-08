@@ -15,19 +15,33 @@ navbar.innerHTML = `
   <nav class="nav-links">
 
     <a href="../top/top.html">
+      <i data-lucide="house"></i>
       トップページ
     </a>
 
     <a href="../maps/maps.html">
+      <i data-lucide="map"></i>
       マップ
     </a>
 
     <a href="../weapons/weapons.html">
+      <i data-lucide="sword"></i>
       武器
     </a>
 
     <a href="../items/items.html">
+      <i data-lucide="backpack"></i>
       アイテム
+    </a>
+
+    <a href="../monster/items.html">
+      <i data-lucide="panda"></i>
+      モンスター
+    </a>
+
+    <a href="../quest/items.html">
+      <i data-lucide="file-text"></i>
+      クエスト
     </a>
 
   </nav>
@@ -156,3 +170,7 @@ searchBar.addEventListener("input",()=>{
   });
 
 });
+
+/* ===== LUCIDE ===== */
+
+lucide.createIcons();

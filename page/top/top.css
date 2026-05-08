@@ -1,188 +1,3 @@
- /* =========================
-   THEME
-========================= */
-
-:root{
-
-  --text:#ffffff;
-  --bg:#05070b;
-
-  --card:rgba(255,255,255,0.06);
-  --border:rgba(255,255,255,0.1);
-
-}
-
-body.light{
-
-  --text:#111827;
-  --bg:#f3f5f8;
-
-  --card:rgba(0,0,0,0.05);
-  --border:rgba(0,0,0,0.12);
-
-}
-
-/* =========================
-   BASE
-========================= */
-
-body{
-
-  margin:0;
-
-  background:var(--bg);
-  color:var(--text);
-
-  font-family:Arial,sans-serif;
-
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-
-  position:relative;
-
-  width:100%;
-  height:720px;
-
-  overflow:hidden;
-
-  border-radius:0 0 24px 24px;
-
-}
-
-/* SLIDER */
-
-.hero-slider{
-
-  display:flex;
-
-  width:400%;
-  height:100%;
-
-  animation:slide 18s infinite;
-
-}
-
-.hero-slider img{
-
-  width:100vw;
-  height:100%;
-
-  object-fit:cover;
-
-  flex-shrink:0;
-
-}
-
-/* OVERLAY */
-
-.hero::after{
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.35),
-    rgba(0,0,0,0.7)
-  );
-
-}
-
-body.light .hero::after{
-
-  background:linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.2),
-    rgba(255,255,255,0.6)
-  );
-
-}
-
-/* =========================
-   HERO TEXT
-========================= */
-
-.hero-overlay{
-
-  position:absolute;
-
-  inset:0;
-
-  z-index:2;
-
-  display:flex;
-  flex-direction:column;
-
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-
-  padding:20px;
-
-}
-
-.hero-title{
-
-  font-size:82px;
-
-  margin:0;
-
-  color:var(--text);
-
-  letter-spacing:4px;
-
-  text-shadow:
-    0 0 18px rgba(255,255,255,0.9),
-    0 0 40px rgba(255,255,255,0.4);
-
-}
-
-.hero-subtitle{
-
-  font-size:26px;
-
-  margin-top:12px;
-
-  color:var(--text);
-
-  opacity:0.85;
-
-  letter-spacing:1px;
-
-}
-
-/* =========================
-   SOCIAL BOX
-========================= */
-
-.social-box{
-
-  max-width:1100px;
-
-  margin:40px auto;
-
-  padding:20px;
-
-  border:2px solid var(--border);
-
-  border-radius:18px;
-
-  background:rgba(255,255,255,0.03);
-
-  backdrop-filter:blur(10px);
-
-}
-
-/* TITLE */
 
 .social-title{
 
@@ -196,129 +11,53 @@ body.light .hero::after{
 
   letter-spacing:2px;
 
-  opacity:0.9;
+  opacity:0.95;
 
   position:relative;
 
-  padding-bottom:10px;
+  padding-bottom:14px;
 
 }
 
 /* =========================
-   STRONG UNDERLINE
+   UNDERLINE (FIXED)
 ========================= */
 
 .social-title::after{
 
   content:"";
 
-  display:block;
+  position:absolute;
 
-  width:320px;   /* ← かなり長くした */
+  left:50%;
+  bottom:0;
 
-  height:3px;    /* ← 太くした */
+  transform:translateX(-50%);
 
-  margin:12px auto 0;
+  width:70%;        /* 横幅しっかり */
+
+  max-width:500px;  /* 画面制限 */
+
+  height:3px;       /* 太く */
 
   background:var(--text);
 
-  opacity:0.9;   /* ← くっきり */
+  opacity:1;        /* くっきり */
 
   border-radius:3px;
 
-  box-shadow:0 0 10px rgba(120,180,255,0.25); /* ← 少し発光 */
+  box-shadow:0 0 10px rgba(120,180,255,0.3);
 
 }
 
 /* =========================
-   GRID
+   LIGHT MODE FIX
 ========================= */
 
-.social-grid{
+body.light .social-title::after{
 
-  display:grid;
+  background:var(--text);
 
-  grid-template-columns:repeat(5, 1fr);
-
-  grid-auto-rows:64px;
-
-  gap:14px;
-
-}
-
-/* CARD */
-
-.social-card{
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:14px;
-
-  text-decoration:none;
-
-  color:var(--text);
-
-  background:var(--card);
-
-  border:1px solid var(--border);
-
-  backdrop-filter:blur(10px);
-
-  font-size:14px;
-
-  transition:all 0.25s ease;
-
-}
-
-.social-card:hover{
-
-  transform:translateY(-4px);
-
-  border:1px solid rgba(120,180,255,0.5);
-
-  box-shadow:0 0 22px rgba(120,180,255,0.25);
-
-}
-
-/* MOBILE */
-
-@media (max-width:768px){
-
-  .social-grid{
-    grid-template-columns:repeat(2, 1fr);
-  }
-
-}
-
-/* SLIDE */
-
-@keyframes slide{
-
-  0%,30%{ transform:translateX(0); }
-  35%,60%{ transform:translateX(-100vw); }
-  65%,90%{ transform:translateX(-200vw); }
-  100%{ transform:translateX(0); }
-
-}
-
-/* =========================
-   TEXT STYLES
-========================= */
-
-.important{
-
-  color:#ff4d4d;
-
-  font-weight:bold;
-
-  text-shadow:0 0 8px rgba(255,0,0,0.4);
-
-}
-
-.underline{
-
-  text-decoration: underline;
+  box-shadow:0 0 6px rgba(0,0,0,0.2);
 
 }

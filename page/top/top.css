@@ -1,4 +1,47 @@
-/* ===== HERO ===== */
+/* =========================
+   THEME VARIABLES
+========================= */
+
+:root{
+
+  --text:#ffffff;
+  --bg:#05070b;
+
+  --card:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.1);
+
+}
+
+/* ===== LIGHT MODE ===== */
+
+body.light{
+
+  --text:#111827;
+  --bg:#f3f5f8;
+
+  --card:rgba(0,0,0,0.05);
+  --border:rgba(0,0,0,0.12);
+
+}
+
+/* =========================
+   BASE
+========================= */
+
+body{
+
+  margin:0;
+
+  background:var(--bg);
+  color:var(--text);
+
+  font-family:Arial,sans-serif;
+
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
 
@@ -55,7 +98,19 @@
 
 }
 
-/* ===== CENTER TEXT ===== */
+body.light .hero::after{
+
+  background:linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.2),
+    rgba(255,255,255,0.6)
+  );
+
+}
+
+/* =========================
+   HERO TEXT
+========================= */
 
 .hero-overlay{
 
@@ -77,15 +132,13 @@
 
 }
 
-/* ===== TITLE ===== */
-
 .hero-title{
 
   font-size:82px;
 
   margin:0;
 
-  color:white;
+  color:var(--text);
 
   letter-spacing:4px;
 
@@ -93,19 +146,21 @@
 
 }
 
-/* ===== SUBTITLE ===== */
-
 .hero-subtitle{
 
   font-size:20px;
 
   margin-top:12px;
 
-  color:rgba(255,255,255,0.8);
+  color:var(--text);
+
+  opacity:0.8;
 
 }
 
-/* ===== SOCIAL GRID ===== */
+/* =========================
+   SOCIAL GRID
+========================= */
 
 .social-grid{
 
@@ -139,11 +194,11 @@
 
   text-decoration:none;
 
-  color:white;
+  color:var(--text);
 
-  background:rgba(255,255,255,0.06);
+  background:var(--card);
 
-  border:1px solid rgba(255,255,255,0.1);
+  border:1px solid var(--border);
 
   backdrop-filter:blur(10px);
 
@@ -165,7 +220,9 @@
 
 }
 
-/* ===== MOBILE ===== */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 768px){
 
@@ -175,7 +232,9 @@
 
 }
 
-/* ===== SLIDE ANIMATION ===== */
+/* =========================
+   SLIDER ANIMATION
+========================= */
 
 @keyframes slide{
 

@@ -1,0 +1,80 @@
+:root{
+
+  --bg:#05070b;
+  --text:#ffffff;
+  --card:#0f131a;
+  --border:rgba(255,255,255,0.08);
+
+}
+
+/* ===== LIGHT ===== */
+
+body.light{
+
+  --bg:#f3f5f8;
+  --text:#111827;
+  --card:#ffffff;
+  --border:rgba(0,0,0,0.08);
+
+}
+
+body{
+
+  margin:0;
+
+  background:var(--bg);
+  color:var(--text);
+
+  font-family:Arial,sans-serif;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+
+}
+
+/* ===== SMALL TOP BUTTON ===== */
+
+#theme-toggle{
+
+  position:fixed;
+
+  top:14px;
+  right:14px;
+
+  width:36px;
+  height:36px;
+
+  border:none;
+  border-radius:50%;
+
+  cursor:pointer;
+
+  font-size:16px;
+
+  background:var(--card);
+  color:var(--text);
+
+  border:1px solid var(--border);
+
+  transition:
+    transform 0.2s ease,
+    background 0.3s ease;
+
+  z-index:9999;
+
+}
+
+#theme-toggle:hover{
+
+  transform:scale(1.08);
+
+}
+
+/* ===== CONTENT ===== */
+
+.container{
+
+  padding:80px 30px;
+
+}

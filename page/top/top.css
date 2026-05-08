@@ -182,7 +182,7 @@ body.light .hero::after{
 
 }
 
-/* TITLE + UNDERLINE ADDED */
+/* TITLE */
 
 .social-title{
 
@@ -204,7 +204,9 @@ body.light .hero::after{
 
 }
 
-/* 下線 */
+/* =========================
+   UNDERLINE FIX
+========================= */
 
 .social-title::after{
 
@@ -212,17 +214,15 @@ body.light .hero::after{
 
   display:block;
 
-  width:90px;
+  width:140px; /* ← 長くした */
+
   height:2px;
 
   margin:10px auto 0;
 
-  background:linear-gradient(
-    to right,
-    transparent,
-    rgba(120,180,255,0.6),
-    transparent
-  );
+  background:var(--text); /* ← 白 / 黒 自動切替 */
+
+  opacity:0.6;
 
   border-radius:2px;
 

@@ -12,8 +12,12 @@
 body.light{
 
   --bg:#f3f5f8;
+
+  /* 本文用文字色 */
   --text:#111827;
+
   --card:#ffffff;
+
   --border:rgba(0,0,0,0.08);
 
 }
@@ -63,6 +67,23 @@ body{
 
   border-bottom:
     1px solid var(--border);
+
+}
+
+/* ===== LIGHT MODE TOPBAR ===== */
+
+body.light .topbar{
+
+  background:rgba(15,15,20,0.82);
+
+}
+
+/* 上部UI文字を白 */
+
+body.light .topbar a,
+body.light .logo{
+
+  color:white;
 
 }
 
@@ -162,6 +183,8 @@ body{
 
 }
 
+/* placeholder */
+
 #search-bar::placeholder{
 
   color:rgba(255,255,255,0.4);
@@ -170,7 +193,17 @@ body{
 
 body.light #search-bar::placeholder{
 
-  color:rgba(0,0,0,0.4);
+  color:rgba(255,255,255,0.6);
+
+}
+
+/* ===== LIGHT SEARCH ===== */
+
+body.light #search-bar{
+
+  color:white;
+
+  background:rgba(255,255,255,0.08);
 
 }
 
@@ -201,6 +234,16 @@ body.light #search-bar::placeholder{
 #theme-toggle:hover{
 
   transform:scale(1.08);
+
+}
+
+/* ===== LIGHT THEME BUTTON ===== */
+
+body.light #theme-toggle{
+
+  color:white;
+
+  background:rgba(255,255,255,0.08);
 
 }
 

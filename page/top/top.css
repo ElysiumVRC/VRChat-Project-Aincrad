@@ -1,4 +1,4 @@
-/* =========================
+ /* =========================
    THEME
 ========================= */
 
@@ -182,7 +182,7 @@ body.light .hero::after{
 
 }
 
-/* TITLE */
+/* TITLE + UNDERLINE ADDED */
 
 .social-title{
 
@@ -198,9 +198,39 @@ body.light .hero::after{
 
   opacity:0.9;
 
+  position:relative;
+
+  padding-bottom:10px;
+
 }
 
-/* GRID */
+/* 下線 */
+
+.social-title::after{
+
+  content:"";
+
+  display:block;
+
+  width:90px;
+  height:2px;
+
+  margin:10px auto 0;
+
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(120,180,255,0.6),
+    transparent
+  );
+
+  border-radius:2px;
+
+}
+
+/* =========================
+   GRID
+========================= */
 
 .social-grid{
 

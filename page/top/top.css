@@ -204,3 +204,73 @@
   }
 
 }
+/* ===== SOCIAL GRID (NEW) ===== */
+
+.social-grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(5, 1fr);
+  grid-template-rows:repeat(2, 1fr);
+
+  gap:14px;
+
+  margin-top:42px;
+
+}
+
+/* ===== CARD ===== */
+
+.social-card{
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  height:64px;
+
+  border-radius:14px;
+
+  text-decoration:none;
+
+  color:white;
+
+  background:rgba(255,255,255,0.06);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  backdrop-filter:blur(10px);
+
+  font-size:14px;
+
+  letter-spacing:1px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border 0.25s ease;
+
+}
+
+/* ===== HOVER ===== */
+
+.social-card:hover{
+
+  transform:translateY(-4px);
+
+  border:1px solid rgba(120,180,255,0.5);
+
+  box-shadow:0 0 22px rgba(120,180,255,0.25);
+
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px){
+
+  .social-grid{
+    grid-template-columns:repeat(2, 1fr);
+    grid-template-rows:auto;
+  }
+
+}

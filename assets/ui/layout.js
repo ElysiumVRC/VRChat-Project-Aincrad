@@ -9,25 +9,25 @@ navbar.innerHTML = `
 <div class="topbar-left">
 
   <div class="logo">
-    CYGNUS
+    Project Aincrad
   </div>
 
   <nav class="nav-links">
 
     <a href="../top/top.html">
-      TOP
+      トップページ
     </a>
 
     <a href="../maps/maps.html">
-      MAP
+      マップ
     </a>
 
     <a href="../weapons/weapons.html">
-      WEAPONS
+      武器
     </a>
 
     <a href="../items/items.html">
-      ITEMS
+      アイテム
     </a>
 
   </nav>
@@ -39,7 +39,7 @@ navbar.innerHTML = `
   <input
     type="text"
     id="search-bar"
-    placeholder="Search..."
+    placeholder="検索..."
   >
 
   <button id="theme-toggle">

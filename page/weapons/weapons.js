@@ -9,7 +9,7 @@ const tagContainer =
 
 let weapons = [];
 
-let activeTags = [];
+let activeFilters = {};
 
 /* =========================
    LOAD JSON
@@ -21,65 +21,112 @@ fetch("weapons.json")
 
     weapons = data;
 
-    createTags();
+    createCategoryTags();
 
     renderWeapons(weapons);
 
   });
 
 /* =========================
-   CREATE TAGS
+   CATEGORY TAGS
 ========================= */
 
-function createTags(){
+function createCategoryTags(){
 
-  const tags = new Set();
+  const categories = {};
 
   weapons.forEach(weapon => {
 
-    weapon.tags.forEach(tag => {
+    Object.entries(
+      weapon.categories
+    ).forEach(([category,value]) => {
 
-      tags.add(tag);
+      if(!categories[category]){
+
+        categories[category] = new Set();
+
+      }
+
+      categories[category].add(value);
 
     });
 
   });
 
-  tags.forEach(tag => {
+  Object.entries(categories)
+    .forEach(([category,values]) => {
 
-    const button =
-      document.createElement("button");
+      const section =
+        document.createElement("div");
 
-    button.className = "tag";
+      section.className =
+        "tag-section";
 
-    button.textContent = tag;
+      section.innerHTML = `
 
-    button.onclick = () => {
+        <h3 class="tag-title">
+          ${category}
+        </h3>
 
-      const index =
-        activeTags.indexOf(tag);
+        <div class="tag-group"></div>
 
-      if(index >= 0){
+      `;
 
-        activeTags.splice(index,1);
+      const group =
+        section.querySelector(".tag-group");
 
-        button.classList.remove("active");
+      values.forEach(value => {
 
-      }else{
+        const button =
+          document.createElement("button");
 
-        activeTags.push(tag);
+        button.className = "tag";
 
-        button.classList.add("active");
+        button.textContent = value;
 
-      }
+        button.onclick = () => {
 
-      filterWeapons();
+          if(
+            activeFilters[category] === value
+          ){
 
-    };
+            delete activeFilters[category];
 
-    tagContainer.appendChild(button);
+            button.classList.remove("active");
 
-  });
+          }else{
+
+            activeFilters[category] = value;
+
+          }
+
+          section
+            .querySelectorAll(".tag")
+            .forEach(tag => {
+
+              tag.classList.remove("active");
+
+            });
+
+          if(
+            activeFilters[category] === value
+          ){
+
+            button.classList.add("active");
+
+          }
+
+          filterWeapons();
+
+        };
+
+        group.appendChild(button);
+
+      });
+
+      tagContainer.appendChild(section);
+
+    });
 
 }
 
@@ -155,17 +202,21 @@ function filterWeapons(){
           .toLowerCase()
           .includes(value);
 
-      const matchesTag =
+      const matchesCategory =
 
-        activeTags.length === 0 ||
+        Object.entries(activeFilters)
+          .every(([category,value]) => {
 
-        activeTags.every(tag =>
-          weapon.tags.includes(tag)
-        );
+            return (
+              weapon.categories[category]
+              === value
+            );
+
+          });
 
       return (
         matchesSearch &&
-        matchesTag
+        matchesCategory
       );
 
     });

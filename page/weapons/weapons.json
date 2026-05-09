@@ -12,7 +12,7 @@
     "categories":{
 
       "武器種":"片手剣",
-      "レベル":"0",
+      "レベル":"0Lv",
       "攻撃方法":"Blunt",
 
       "入手":[
@@ -37,7 +37,7 @@
     "categories":{
 
       "武器種":"片手剣",
-      "レベル":"1",
+      "レベル":"1Lv",
       "攻撃方法":"Slash",
 
       "入手":[
@@ -62,7 +62,7 @@
     "categories":{
 
       "武器種":"レイピア",
-      "レベル":"1",
+      "レベル":"1Lv",
       "攻撃方法":"Pierce",
 
       "入手":[
@@ -72,5 +72,28 @@
       ]
 
     }
+  },
+
+  {
+    "name":"Bronze Dagger",
+    "image":"../../assets/images/weapons/Bronze Dagger.png",
+    "level":"1",
+    "attack":"13-20",
+    "buy":"420",
+    "sell":"210",
+    "type":"Pierce",
+    "link":"detail/Bronze-Dagger.html",
+
+    "categories":{
+
+      "武器種":"短剣",
+      "レベル":"1Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+      
+
+    }
   }
+  
 ]

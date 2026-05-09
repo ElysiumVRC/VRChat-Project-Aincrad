@@ -9,6 +9,10 @@ const tagContainer =
 
 let weapons = [];
 
+/* =========================
+   MULTI FILTER
+========================= */
+
 let activeFilters = {};
 
 /* =========================
@@ -47,7 +51,21 @@ function createCategoryTags(){
 
       }
 
-      categories[category].add(value);
+      /* 配列対応 */
+
+      if(Array.isArray(value)){
+
+        value.forEach(v => {
+
+          categories[category].add(v);
+
+        });
+
+      }else{
+
+        categories[category].add(value);
+
+      }
 
     });
 
@@ -86,33 +104,50 @@ function createCategoryTags(){
 
         button.onclick = () => {
 
-          if(
-            activeFilters[category] === value
-          ){
+          /* category 初期化 */
 
-            delete activeFilters[category];
+          if(!activeFilters[category]){
 
-            button.classList.remove("active");
-
-          }else{
-
-            activeFilters[category] = value;
+            activeFilters[category] = [];
 
           }
 
-          section
-            .querySelectorAll(".tag")
-            .forEach(tag => {
-
-              tag.classList.remove("active");
-
-            });
+          /* ON/OFF */
 
           if(
-            activeFilters[category] === value
+            activeFilters[category]
+              .includes(value)
           ){
 
-            button.classList.add("active");
+            activeFilters[category] =
+              activeFilters[category]
+                .filter(v => v !== value);
+
+            button.classList.remove(
+              "active"
+            );
+
+          }else{
+
+            activeFilters[category]
+              .push(value);
+
+            button.classList.add(
+              "active"
+            );
+
+          }
+
+          /* 空なら削除 */
+
+          if(
+            activeFilters[category]
+              .length === 0
+          ){
+
+            delete activeFilters[
+              category
+            ];
 
           }
 
@@ -136,7 +171,37 @@ function createCategoryTags(){
 
 function renderWeapons(data){
 
-  weaponList.innerHTML = "";
+  weaponList.innerHTML = `
+
+    <div class="weapon-header">
+
+      <div>
+        武器名
+      </div>
+
+      <div>
+        レベル
+      </div>
+
+      <div>
+        攻撃力
+      </div>
+
+      <div>
+        買値
+      </div>
+
+      <div>
+        売値
+      </div>
+
+      <div>
+        攻撃方法
+      </div>
+
+    </div>
+
+  `;
 
   data.forEach(weapon => {
 
@@ -144,17 +209,22 @@ function renderWeapons(data){
 
       <div class="weapon-card">
 
-        <a
-          class="weapon-name"
-          href="${weapon.link}"
-        >
-          ${weapon.name}
-        </a>
+        <div class="weapon-name-area">
 
-        <img
-          class="weapon-image"
-          src="${weapon.image}"
-        >
+          <img
+            class="weapon-image"
+            src="${weapon.image}"
+            alt="${weapon.name}"
+          >
+
+          <a
+            class="weapon-name"
+            href="${weapon.link}"
+          >
+            ${weapon.name}
+          </a>
+
+        </div>
 
         <div class="weapon-stat">
           Lv.${weapon.level}
@@ -196,20 +266,42 @@ function filterWeapons(){
   const filtered =
     weapons.filter(weapon => {
 
+      /* SEARCH */
+
       const matchesSearch =
 
         weapon.name
           .toLowerCase()
           .includes(value);
 
+      /* CATEGORY */
+
       const matchesCategory =
 
         Object.entries(activeFilters)
-          .every(([category,value]) => {
+          .every(([category,values]) => {
 
-            return (
-              weapon.categories[category]
-              === value
+            const weaponValue =
+              weapon.categories[
+                category
+              ];
+
+            /* weapon側が配列 */
+
+            if(
+              Array.isArray(weaponValue)
+            ){
+
+              return values.some(v =>
+                weaponValue.includes(v)
+              );
+
+            }
+
+            /* weapon側が単体 */
+
+            return values.includes(
+              weaponValue
             );
 
           });

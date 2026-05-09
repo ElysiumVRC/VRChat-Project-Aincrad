@@ -3,24 +3,44 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>武器一覧</title>
 
 <link rel="stylesheet" href="../../assets/ui/layout.css">
+<link rel="stylesheet" href="weapons.css">
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  
+<script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 <body>
 
 <div class="page-content">
 
-  <h1>武器一覧</h1>
+  <h1 class="page-title">
+    武器一覧
+  </h1>
+
+  <!-- SEARCH -->
+
+  <input
+    type="text"
+    id="weapon-search"
+    placeholder="武器検索..."
+  >
+
+  <!-- TAGS -->
+
+  <div id="tag-container"></div>
+
+  <!-- LIST -->
+
+  <div class="weapon-list" id="weapon-list"></div>
 
 </div>
 
 <script src="../../assets/ui/layout.js"></script>
+<script src="weapons.js"></script>
 
 </body>
 </html>

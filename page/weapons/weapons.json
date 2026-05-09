@@ -1,7 +1,7 @@
 [
   {
     "name":"Wooden Sword",
-    "image":"../../assets/images/weapons/Wooden Sword.png",
+    "image":"weaponpng/Wooden Sword.png",
     "level":"0",
     "attack":"3.25-5",
     "buy":"50",
@@ -26,7 +26,7 @@
 
   {
     "name":"Bronze Sword",
-    "image":"../../assets/images/weapons/Bronze Sword.png",
+    "image":"weaponpng/Bronze Sword.png",
     "level":"1",
     "attack":"13-20",
     "buy":"420",
@@ -51,7 +51,7 @@
 
   {
     "name":"Bronze Rapier",
-    "image":"../../assets/images/weapons/Bronze Rapier.png",
+    "image":"weaponpng/Bronze Rapier.png",
     "level":"1",
     "attack":"13-21",
     "buy":"420",
@@ -76,7 +76,7 @@
 
   {
     "name":"Bronze Dagger",
-    "image":"../../assets/images/weapons/Bronze Dagger.png",
+    "image":"weaponpng/Bronze Dagger.png",
     "level":"1",
     "attack":"13-20",
     "buy":"420",

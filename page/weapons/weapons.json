@@ -28,8 +28,17 @@
     "buy":"420",
     "sell":"210",
     "type":"Slash",
-    "tags":["片手剣","初期装備"],
-    "link":"detail/Bronze-Sword.html"
+    "link":"detail/Bronze-Sword.html",
+    "categories":{
+
+    "武器種":"片手剣",
+
+    "レベル":"1",
+
+    "攻撃方法":"Slash",
+
+    "入手":"ショップ","宝箱","初期装備"
+    }
   },
 
   {
@@ -40,7 +49,16 @@
     "buy":"420",
     "sell":"210",
     "type":"Pierce",
-    "tags":["レイピア","初期装備"],
     "link":"detail/Bronze-Rapier.html"
+    "categories":{
+
+    "武器種":"レイピア",
+
+    "レベル":"1",
+
+    "攻撃方法":"Pierce",
+
+    "入手":"ショップ","宝箱","クエスト"
+    }
   }
 ]

@@ -21,5 +21,17 @@
     "type":"Slash",
     "tags":["片手剣","初期装備"],
     "link":"detail/Bronze-Sword.html"
+  },
+
+  {
+    "name":"Bronze Rapier",
+    "image":"../../assets/images/weapons/Bronze Rapier.png",
+    "level":"1",
+    "attack":"13-21",
+    "buy":"420",
+    "sell":"210",
+    "type":"Pierce",
+    "tags":["レイピア","初期装備"],
+    "link":"detail/Bronze-Rapier.html"
   }
 ]

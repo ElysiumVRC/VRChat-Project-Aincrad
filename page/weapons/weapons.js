@@ -9,7 +9,11 @@ const tagContainer =
 
 let weapons = [];
 
-let activeTag = null;
+let activeTags = [];
+
+/* =========================
+   LOAD JSON
+========================= */
 
 fetch("weapons.json")
   .then(res => res.json())
@@ -18,9 +22,14 @@ fetch("weapons.json")
     weapons = data;
 
     createTags();
-    renderWeapons(data);
+
+    renderWeapons(weapons);
 
   });
+
+/* =========================
+   CREATE TAGS
+========================= */
 
 function createTags(){
 
@@ -47,21 +56,18 @@ function createTags(){
 
     button.onclick = () => {
 
-      if(activeTag === tag){
+      const index =
+        activeTags.indexOf(tag);
 
-        activeTag = null;
+      if(index >= 0){
 
-        document
-          .querySelectorAll(".tag")
-          .forEach(t => t.classList.remove("active"));
+        activeTags.splice(index,1);
+
+        button.classList.remove("active");
 
       }else{
 
-        activeTag = tag;
-
-        document
-          .querySelectorAll(".tag")
-          .forEach(t => t.classList.remove("active"));
+        activeTags.push(tag);
 
         button.classList.add("active");
 
@@ -77,6 +83,10 @@ function createTags(){
 
 }
 
+/* =========================
+   RENDER
+========================= */
+
 function renderWeapons(data){
 
   weaponList.innerHTML = "";
@@ -87,7 +97,10 @@ function renderWeapons(data){
 
       <div class="weapon-card">
 
-        <a class="weapon-name" href="${weapon.link}">
+        <a
+          class="weapon-name"
+          href="${weapon.link}"
+        >
           ${weapon.name}
         </a>
 
@@ -124,27 +137,46 @@ function renderWeapons(data){
 
 }
 
+/* =========================
+   FILTER
+========================= */
+
 function filterWeapons(){
 
   const value =
     searchInput.value.toLowerCase();
 
-  let filtered = weapons.filter(weapon => {
+  const filtered =
+    weapons.filter(weapon => {
 
-    const matchesSearch =
-      weapon.name.toLowerCase().includes(value);
+      const matchesSearch =
 
-    const matchesTag =
-      !activeTag ||
-      weapon.tags.includes(activeTag);
+        weapon.name
+          .toLowerCase()
+          .includes(value);
 
-    return matchesSearch && matchesTag;
+      const matchesTag =
 
-  });
+        activeTags.length === 0 ||
+
+        activeTags.every(tag =>
+          weapon.tags.includes(tag)
+        );
+
+      return (
+        matchesSearch &&
+        matchesTag
+      );
+
+    });
 
   renderWeapons(filtered);
 
 }
+
+/* =========================
+   SEARCH
+========================= */
 
 searchInput.addEventListener(
   "input",

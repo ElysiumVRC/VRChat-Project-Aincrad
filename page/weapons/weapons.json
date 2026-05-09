@@ -1,1 +1,25 @@
+[
+  {
+    "name":"Wooden Sword",
+    "image":"../../assets/images/weapons/Wooden Sword.png",
+    "level":"0",
+    "attack":"3.25-5",
+    "buy":"50",
+    "sell":"25",
+    "type":"Blunt",
+    "tags":["片手剣","初期装備"],
+    "link":"detail/Wooden-Sword.html"
+  },
 
+  {
+    "name":"Bronze Sword",
+    "image":"../../assets/images/weapons/Bronze Sword.png",
+    "level":"1",
+    "attack":"13-20",
+    "buy":"420",
+    "sell":"210",
+    "type":"Slash",
+    "tags":["片手剣","初期装備"],
+    "link":"detail/Bronze-Sword.html"
+  }
+]

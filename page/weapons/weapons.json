@@ -788,6 +788,206 @@
 
       "入手":"ショップ"
     }
+  },
+
+  {
+    "name":"Iron Rapier",
+    "image":"weaponpng/Iron Rapier.png",
+    "level":"2",
+    "attack":"22.09-35.69",
+    "buy":"880",
+    "sell":"440",
+    "type":"Pierce",
+    "link":"detail/Iron Rapier.html",
+
+    "categories":{
+
+      "武器種":"Rapier",
+      "レベル":"2Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Iron Greatsword",
+    "image":"weaponpng/Iron Greatsword.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"1200",
+    "sell":"600",
+    "type":"Slash",
+    "link":"detail/Iron Greatsword.html",
+
+    "categories":{
+
+      "武器種":"Great Sword",
+      "レベル":"2Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Iron Axe",
+    "image":"weaponpng/Iron Axe.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"800",
+    "sell":"400",
+    "type":"Slash",
+    "link":"detail/Iron Axe.html",
+
+    "categories":{
+
+      "武器種":"Axe",
+      "レベル":"2Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Iron Sword",
+    "image":"weaponpng/Iron Sword.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"800",
+    "sell":"400",
+    "type":"Slash",
+    "link":"detail/Iron Sword.html",
+
+    "categories":{
+
+      "武器種":"Sword",
+      "レベル":"2Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Iron Dagger",
+    "image":"weaponpng/Iron Dagger.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"690",
+    "sell":"345",
+    "type":"Pierce",
+    "link":"detail/Iron Dagger.html",
+
+    "categories":{
+
+      "武器種":"Dagger",
+      "レベル":"2Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Iron Greataxe",
+    "image":"weaponpng/Iron Greataxe.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"900",
+    "sell":"450",
+    "type":"Slash",
+    "link":"detail/Iron Greataxe.html",
+
+    "categories":{
+
+      "武器種":"Great Axe",
+      "レベル":"2Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Iron Spear",
+    "image":"weaponpng/Iron Spear.png",
+    "level":"2",
+    "attack":"22.09-35.69",
+    "buy":"800",
+    "sell":"400",
+    "type":"Pierce",
+    "link":"detail/Iron Spear.html",
+
+    "categories":{
+
+      "武器種":"Spear",
+      "レベル":"2Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Iron Mace",
+    "image":"weaponpng/Iron Mace.png",
+    "level":"2",
+    "attack":"17.68-27.2",
+    "buy":"750",
+    "sell":"375",
+    "type":"Blunt",
+    "link":"detail/Iron Mace.html",
+
+    "categories":{
+
+      "武器種":"Mace",
+      "レベル":"2Lv",
+      "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Iron Katana",
+    "image":"weaponpng/Iron Katana.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"900",
+    "sell":"450",
+    "type":"Slash",
+    "link":"detail/Iron Katana.html",
+
+    "categories":{
+
+      "武器種":"Katana",
+      "レベル":"2Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Iron Maul",
+    "image":"weaponpng/Iron Maul.png",
+    "level":"2",
+    "attack":"19.66-30.26",
+    "buy":"1000",
+    "sell":"500",
+    "type":"Blunt",
+    "link":"detail/Iron Maul.html",
+
+    "categories":{
+
+      "武器種":"Maul",
+      "レベル":"2Lv",
+      "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
+    }
   }
   
 ]

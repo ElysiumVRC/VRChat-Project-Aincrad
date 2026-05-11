@@ -576,6 +576,28 @@
       
 
     }
+  },
+
+  {
+    "name":"Divine Blade",
+    "image":"weaponpng/Divine Blade.png",
+    "level":"8",
+    "attack":"41.76-64.26",
+    "buy":"14000",
+    "sell":"7000",
+    "type":"Pierce",
+    "link":"detail/Divine Blade.html",
+
+    "categories":{
+
+      "武器種":"Long Sword",
+      "レベル":"8Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+      
+
+    }
   }
   
 ]

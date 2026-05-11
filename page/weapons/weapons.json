@@ -786,7 +786,7 @@
       "レベル":"8Lv",
       "攻撃方法":"Slash",
 
-      "入手":"ショップ"
+      "入手":"クエスト"
     }
   },
 
@@ -985,6 +985,166 @@
       "武器種":"Maul",
       "レベル":"2Lv",
       "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Anneal Greataxe",
+    "image":"weaponpng/Anneal Greataxe.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"11000",
+    "sell":"5500",
+    "type":"Slash",
+    "link":"detail/Anneal Greataxe.html",
+
+    "categories":{
+
+      "武器種":"Great Axe",
+      "レベル":"8Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Anneal Mace",
+    "image":"weaponpng/Anneal Mace.png",
+    "level":"8",
+    "attack":"32.75-50.4",
+    "buy":"11000",
+    "sell":"5500",
+    "type":"Blunt",
+    "link":"detail/Anneal Mace.html",
+
+    "categories":{
+
+      "武器種":"Mace",
+      "レベル":"8Lv",
+      "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Anneal Axe",
+    "image":"weaponpng/Anneal Axe.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"9950",
+    "sell":"4475",
+    "type":"Slash",
+    "link":"detail/Anneal Axe.html",
+
+    "categories":{
+
+      "武器種":"Axe",
+      "レベル":"8Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Anneal Spear",
+    "image":"weaponpng/Anneal Spear.png",
+    "level":"8",
+    "attack":"40.94-66.14",
+    "buy":"11000",
+    "sell":"5500",
+    "type":"Pierce",
+    "link":"detail/Anneal Spear.html",
+
+    "categories":{
+
+      "武器種":"Spear",
+      "レベル":"8Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Anneal Maul",
+    "image":"weaponpng/Anneal Maul.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"12000",
+    "sell":"6000",
+    "type":"Blunt",
+    "link":"detail/Anneal Blunt.html",
+
+    "categories":{
+
+      "武器種":"Maul",
+      "レベル":"8Lv",
+      "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Anneal Rapier",
+    "image":"weaponpng/Anneal Rapier.png",
+    "level":"8",
+    "attack":"40.94-66.14",
+    "buy":"13000",
+    "sell":"6500",
+    "type":"Pierce",
+    "link":"detail/Anneal Pierce.html",
+
+    "categories":{
+
+      "武器種":"Rapier",
+      "レベル":"8Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Anneal Greatsword",
+    "image":"weaponpng/Anneal Greatsword.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"13502",
+    "sell":"6751",
+    "type":"Slash",
+    "link":"detail/Anneal Greatsword.html",
+
+    "categories":{
+
+      "武器種":"Great Sword",
+      "レベル":"8Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Anneal Dagger",
+    "image":"weaponpng/Anneal Dagger.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"8800",
+    "sell":"4400",
+    "type":"Slash",
+    "link":"detail/Anneal Dagger.html",
+
+    "categories":{
+
+      "武器種":"Dagger",
+      "レベル":"8Lv",
+      "攻撃方法":"Slash",
 
       "入手":"ショップ"
     }

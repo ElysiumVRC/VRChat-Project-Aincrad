@@ -728,6 +728,66 @@
 
       "入手":"ショップ"
     }
+  },
+
+  {
+    "name":"Elucidator Replica",
+    "image":"weaponpng/Elucidator Replica.png",
+    "level":"5",
+    "attack":"32.5-50",
+    "buy":"8000",
+    "sell":"4000",
+    "type":"Slash",
+    "link":"detail/Elucidator Replica.html",
+
+    "categories":{
+
+      "武器種":"Long Sword",
+      "レベル":"5Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Lambent Light Replica",
+    "image":"weaponpng/Lambent Light Replica.png",
+    "level":"5",
+    "attack":"32.5-52.49",
+    "buy":"8000",
+    "sell":"4000",
+    "type":"Pierce",
+    "link":"detail/Lambent Light Replica.html",
+
+    "categories":{
+
+      "武器種":"Rapier",
+      "レベル":"5Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Anneal Blade",
+    "image":"weaponpng/Anneal Blade.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"クエスト",
+    "sell":"7500",
+    "type":"Slash",
+    "link":"detail/Anneal Blade.html",
+
+    "categories":{
+
+      "武器種":"Long Sword",
+      "レベル":"8Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
   }
   
 ]

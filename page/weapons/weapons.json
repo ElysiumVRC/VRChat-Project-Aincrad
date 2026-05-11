@@ -224,6 +224,50 @@
       
 
     }
+  },
+
+  {
+    "name":"Chopper",
+    "image":"weaponpng/Chopper.png",
+    "level":"1",
+    "attack":"13-20",
+    "buy":"500",
+    "sell":"250",
+    "type":"Slash",
+    "link":"detail/Chopper.html",
+
+    "categories":{
+
+      "武器種":"片手斧",
+      "レベル":"1Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+      
+
+    }
+  },
+
+  {
+    "name":"Cutting Response",
+    "image":"weaponpng/Cutting Response.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"950",
+    "sell":"475",
+    "type":"Slash",
+    "link":"detail/Cutting Response.html",
+
+    "categories":{
+
+      "武器種":"片手戦斧",
+      "レベル":"1Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+      
+
+    }
   }
   
 ]

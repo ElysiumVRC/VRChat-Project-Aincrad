@@ -422,6 +422,160 @@
       
 
     }
+  },
+
+  {
+    "name":"Honor's Call",
+    "image":"weaponpng/Honor's Call.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"950",
+    "sell":"475",
+    "type":"Slash",
+    "link":"detail/Honor's Call.html",
+
+    "categories":{
+
+      "武器種":"Curved Sword",
+      "レベル":"2Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+      
+
+    }
+  },
+
+  {
+    "name":"Knight's Sword",
+    "image":"weaponpng/Knight's Sword.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"950",
+    "sell":"475",
+    "type":"Slash",
+    "link":"detail/Knight's Sword.html",
+
+    "categories":{
+
+      "武器種":"Long Sword",
+      "レベル":"2Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+      
+
+    }
+  },
+
+  {
+    "name":"Sucker Punch",
+    "image":"weaponpng/Sucker Punch.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"950",
+    "sell":"475",
+    "type":"Blunt",
+    "link":"detail/Sucker Punch.html",
+
+    "categories":{
+
+      "武器種":"Maul",
+      "レベル":"2Lv",
+      "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
+      
+
+    }
+  },
+
+  {
+    "name":"Iron Scythe",
+    "image":"weaponpng/Iron Scythe.png",
+    "level":"2",
+    "attack":"24.31-37.4",
+    "buy":"970",
+    "sell":"485",
+    "type":"Slash",
+    "link":"detail/Iron Scythe.html",
+
+    "categories":{
+
+      "武器種":"Scythe",
+      "レベル":"2Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+      
+
+    }
+  },
+
+  {
+    "name":"Halberd",
+    "image":"weaponpng/Halberd.png",
+    "level":"2",
+    "attack":"22.09-34",
+    "buy":"850",
+    "sell":"425",
+    "type":"Slash",
+    "link":"detail/Halberd.html",
+
+    "categories":{
+
+      "武器種":"Great Axe",
+      "レベル":"2Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+      
+
+    }
+  },
+
+  {
+    "name":"Sharp Spear",
+    "image":"weaponpng/Sharp Spear.png",
+    "level":"2",
+    "attack":"22.09-35.69",
+    "buy":"950",
+    "sell":"475",
+    "type":"Pierce",
+    "link":"detail/Sharp Spear.html",
+
+    "categories":{
+
+      "武器種":"Spear",
+      "レベル":"2Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+      
+
+    }
+  },
+
+  {
+    "name":"Fancy Impaler",
+    "image":"weaponpng/Fancy Impaler.png",
+    "level":"8",
+    "attack":"40.94-66.14",
+    "buy":"12000",
+    "sell":"6000",
+    "type":"Pierce",
+    "link":"detail/Fancy Impaler.html",
+
+    "categories":{
+
+      "武器種":"Spear",
+      "レベル":"8Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+      
+
+    }
   }
   
 ]

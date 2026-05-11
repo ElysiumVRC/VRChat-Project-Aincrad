@@ -91,6 +91,136 @@
       "攻撃方法":"Pierce",
 
       "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Bronze Axe",
+    "image":"weaponpng/Bronze Axe.png",
+    "level":"1",
+    "attack":"13-20",
+    "buy":"420",
+    "sell":"210",
+    "type":"Slash",
+    "link":"detail/Bronze-Axe.html",
+
+    "categories":{
+
+      "武器種":"片手斧",
+      "レベル":"1Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Bronze Greatsword",
+    "image":"weaponpng/Bronze Greatsword.png",
+    "level":"1",
+    "attack":"13-20",
+    "buy":"420",
+    "sell":"210",
+    "type":"Slash",
+    "link":"detail/Bronze-Greatsword.html",
+
+    "categories":{
+
+      "武器種":"両手剣",
+      "レベル":"1Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+      
+
+    }
+  },
+
+  {
+    "name":"Bronze Greataxe",
+    "image":"weaponpng/Bronze Greataxe.png",
+    "level":"1",
+    "attack":"13-20",
+    "buy":"420",
+    "sell":"210",
+    "type":"Slash",
+    "link":"detail/Bronze-Greataxe.html",
+
+    "categories":{
+
+      "武器種":"両手大斧",
+      "レベル":"1Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+      
+
+    }
+  },
+
+  {
+    "name":"Bronze Spear",
+    "image":"weaponpng/Bronze Spear.png",
+    "level":"1",
+    "attack":"13-21",
+    "buy":"420",
+    "sell":"210",
+    "type":"Pierce",
+    "link":"detail/Bronze-Spear.html",
+
+    "categories":{
+
+      "武器種":"槍",
+      "レベル":"1Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":["ショップ",
+        "宝箱"
+      ]
+      
+
+    }
+  },
+
+  {
+    "name":"Bronze Mace",
+    "image":"weaponpng/Bronze Mace.png",
+    "level":"1",
+    "attack":"10.4-16",
+    "buy":"420",
+    "sell":"210",
+    "type":"Blunt",
+    "link":"detail/Bronze-Mace.html",
+
+    "categories":{
+
+      "武器種":"メイス",
+      "レベル":"1Lv",
+      "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
+      
+
+    }
+  },
+
+  {
+    "name":"Bronze Maul",
+    "image":"weaponpng/Bronze Maul.png",
+    "level":"1",
+    "attack":"13-20",
+    "buy":"420",
+    "sell":"210",
+    "type":"Blunt",
+    "link":"detail/Bronze-Maul.html",
+
+    "categories":{
+
+      "武器種":"大槌",
+      "レベル":"1Lv",
+      "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
       
 
     }

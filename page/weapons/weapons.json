@@ -1148,6 +1148,146 @@
 
       "入手":"ショップ"
     }
+  },
+
+  {
+    "name":"Dirk of Agony",
+    "image":"weaponpng/Dirk of Agony.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"8500",
+    "sell":"4250",
+    "type":"Pierce",
+    "link":"detail/Dirk of Agony.html",
+
+    "categories":{
+
+      "武器種":"Dagger",
+      "レベル":"8Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Bloody Rapier",
+    "image":"weaponpng/Bloody Rapier.png",
+    "level":"10",
+    "attack":"45.5-70",
+    "buy":"26000",
+    "sell":"13000",
+    "type":"Pierce",
+    "link":"detail/Bloody Rapier.html",
+
+    "categories":{
+
+      "武器種":"Rapier",
+      "レベル":"10Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Biting Axe",
+    "image":"weaponpng/Biting Axe.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"11000",
+    "sell":"5500",
+    "type":"Slash",
+    "link":"detail/Biting Axe.html",
+
+    "categories":{
+
+      "武器種":"Battle Axe",
+      "レベル":"8Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Lamp Light",
+    "image":"weaponpng/Lamp Light.png",
+    "level":"8",
+    "attack":"32.75-50.4",
+    "buy":"9000",
+    "sell":"4500",
+    "type":"Blunt",
+    "link":"detail/Lamp Light.html",
+
+    "categories":{
+
+      "武器種":"Mace",
+      "レベル":"8Lv",
+      "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Abyssal Cleaver",
+    "image":"weaponpng/Abyssal Cleaver.png",
+    "level":"8",
+    "attack":"42.99-66.94",
+    "buy":"13010",
+    "sell":"6505",
+    "type":"Slash",
+    "link":"detail/Abyssal Cleaver.html",
+
+    "categories":{
+
+      "武器種":"Great Sword",
+      "レベル":"8Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Stout Brand",
+    "image":"weaponpng/Stout Brand.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"10000",
+    "sell":"5000",
+    "type":"Slash",
+    "link":"detail/Stout Brand.html",
+
+    "categories":{
+
+      "武器種":"Short Sword",
+      "レベル":"8Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Wind-Forged-Valkyrie",
+    "image":"weaponpng/Wind-Forged-Valkyrie.png",
+    "level":"10",
+    "attack":"45.5-73.5",
+    "buy":"23000",
+    "sell":"11500",
+    "type":"Pierce",
+    "link":"detail/Wind-Forged-Valkyrie.html",
+
+    "categories":{
+
+      "武器種":"Spear",
+      "レベル":"10Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"ショップ"
+    }
   }
   
 ]

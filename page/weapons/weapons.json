@@ -1288,6 +1288,266 @@
 
       "入手":"ショップ"
     }
+  },
+
+  {
+    "name":"Vowed Edge",
+    "image":"weaponpng/Vowed Edge.png",
+    "level":"10",
+    "attack":"50.05-77",
+    "buy":"25000",
+    "sell":"12500",
+    "type":"Slash",
+    "link":"detail/Vowed Edge.html",
+
+    "categories":{
+
+      "武器種":"Battle Axe",
+      "レベル":"10Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Shatterskull",
+    "image":"weaponpng/Shatterskull.png",
+    "level":"10",
+    "attack":"45.5-70",
+    "buy":"24000",
+    "sell":"12000",
+    "type":"Blunt",
+    "link":"detail/Shatterskull.html",
+
+    "categories":{
+
+      "武器種":"War Hammer",
+      "レベル":"10Lv",
+      "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Octoblade",
+    "image":"weaponpng/Octoblade.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"12000",
+    "sell":"6000",
+    "type":"Slash",
+    "link":"detail/Octoblade.html",
+
+    "categories":{
+
+      "武器種":"Great Sword",
+      "レベル":"8Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"War Hammer",
+    "image":"weaponpng/War Hammer.png",
+    "level":"10",
+    "attack":"50.05-77",
+    "buy":"26000",
+    "sell":"13000",
+    "type":"Blunt",
+    "link":"detail/War Hammer.html",
+
+    "categories":{
+
+      "武器種":"War Hammer",
+      "レベル":"10Lv",
+      "攻撃方法":"Blunt",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Shadow Dagger",
+    "image":"weaponpng/Shadow Dagger.png",
+    "level":"10",
+    "attack":"45.5-70",
+    "buy":"21000",
+    "sell":"10500",
+    "type":"Slash",
+    "link":"detail/Shadow Dagger.html",
+
+    "categories":{
+
+      "武器種":"Dagger",
+      "レベル":"10Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Shaped Obsidian",
+    "image":"weaponpng/Shaped Obsidian.png",
+    "level":"10",
+    "attack":"50.05-77",
+    "buy":"27000",
+    "sell":"13500",
+    "type":"Slash",
+    "link":"detail/Shaped Obsidian.html",
+
+    "categories":{
+
+      "武器種":"Great Sword",
+      "レベル":"10Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Last Words",
+    "image":"weaponpng/Last Words.png",
+    "level":"10",
+    "attack":"45.5-70",
+    "buy":"25000",
+    "sell":"12500",
+    "type":"Slash",
+    "link":"detail/Last Words.html",
+
+    "categories":{
+
+      "武器種":"Short Sword",
+      "レベル":"10Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"ショップ"
+    }
+  },
+
+  {
+    "name":"Black Metal Katana",
+    "image":"weaponpng/Black Metal Katana.png",
+    "level":"10",
+    "attack":"50.05-77",
+    "buy":"Quest",
+    "sell":"8000",
+    "type":"Slash",
+    "link":"detail/Black Metal Katana.html",
+
+    "categories":{
+
+      "武器種":"Katana",
+      "レベル":"10Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"クエスト"
+    }
+  },
+
+  {
+    "name":"Inkvoid",
+    "image":"weaponpng/Inkvoid.png",
+    "level":"10",
+    "attack":"52.5-73.5",
+    "buy":"Quest",
+    "sell":"0",
+    "type":"Pierce",
+    "link":"detail/Inkvoid.html",
+
+    "categories":{
+
+      "武器種":"Spear",
+      "レベル":"10Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"クエスト"
+    }
+  },
+
+  {
+    "name":"Dark Dagger",
+    "image":"weaponpng/Dark Dagger.png",
+    "level":"5",
+    "attack":"32.5-50",
+    "buy":"宝箱",
+    "sell":"600",
+    "type":"Pierce",
+    "link":"detail/Dark Dagger.html",
+
+    "categories":{
+
+      "武器種":"Dagger",
+      "レベル":"5Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"宝箱"
+    }
+  },
+
+  {
+    "name":"Vespid Rapier",
+    "image":"weaponpng/Vespid Rapier.png",
+    "level":"5",
+    "attack":"32.5-52.49",
+    "buy":"モンスタードロップ",
+    "sell":"875",
+    "type":"Pierce",
+    "link":"detail/Vespid Rapier.html",
+
+    "categories":{
+
+      "武器種":"Rapier",
+      "レベル":"5Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"モンスタードロップ"
+    }
+  },
+
+  {
+    "name":"Quartanier",
+    "image":"weaponpng/Quartanier.png",
+    "level":"5",
+    "attack":"32.5-52.49",
+    "buy":"モンスタードロップ",
+    "sell":"700",
+    "type":"Pierce",
+    "link":"detail/Quartanier.html",
+
+    "categories":{
+
+      "武器種":"Spear",
+      "レベル":"5Lv",
+      "攻撃方法":"Pierce",
+
+      "入手":"モンスタードロップ"
+    }
+  },
+
+  {
+    "name":"Blood Thorn",
+    "image":"weaponpng/Blood Thorn.png",
+    "level":"8",
+    "attack":"40.94-63",
+    "buy":"モンスタードロップ",
+    "sell":"6000",
+    "type":"Slash",
+    "link":"detail/Blood Thorn.html",
+
+    "categories":{
+
+      "武器種":"Rapier",
+      "レベル":"8Lv",
+      "攻撃方法":"Slash",
+
+      "入手":"モンスタードロップ"
+    }
   }
   
 ]

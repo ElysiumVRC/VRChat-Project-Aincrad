@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>マップ</title>
+
+<link rel="stylesheet" href="../../assets/ui/layout.css">
+<link rel="stylesheet" href="map.css">
+
+</head>
+<body>
+
+<div class="map-page">
+
+  <!-- LEFT MENU -->
+  <aside class="map-sidebar">
+
+    <input id="map-search" placeholder="エリア検索...">
+
+    <div id="area-list"></div>
+
+  </aside>
+
+  <!-- RIGHT CONTENT -->
+  <main class="map-main">
+
+    <div class="map-header">
+
+      <h1 id="area-title">エリア選択</h1>
+
+      <p id="area-desc">エリア選択</p>
+
+    </div>
+
+    <div class="map-container">
+
+      <img id="map-image" src="" alt="map">
+
+      <div id="map-points"></div>
+
+    </div>
+
+  </main>
+
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup hidden">
+  <div class="popup-box">
+    <h3 id="popup-title"></h3>
+    <p id="popup-text"></p>
+    <button id="popup-close">閉じる</button>
+  </div>
+</div>
+
+<script src="map.js"></script>
+
+</body>
+</html>

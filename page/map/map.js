@@ -1,58 +1,3 @@
-const mapView = document.getElementById("map-view");
-const mapInfo = document.getElementById("map-info");
-const search = document.getElementById("map-search");
-const categoryBox = document.getElementById("map-category");
-
-let maps = [];
-let activeCategory = "all";
-
-/* ========================= LOAD ========================= */
-
-fetch("map.json")
-  .then(res => res.json())
-  .then(data => {
-
-    maps = data;
-
-    createCategoryUI();
-    renderMapPoints();
-
-  });
-
-/* ========================= CATEGORY UI ========================= */
-
-function createCategoryUI(){
-
-  const categories = ["all","region","city","dungeon"];
-
-  categories.forEach(cat => {
-
-    const btn = document.createElement("button");
-
-    btn.className = "area-btn";
-    btn.textContent = cat;
-
-    btn.onclick = () => {
-
-      activeCategory = cat;
-
-      document.querySelectorAll(".area-btn")
-        .forEach(b => b.classList.remove("active"));
-
-      btn.classList.add("active");
-
-      renderMapPoints();
-
-    };
-
-    categoryBox.appendChild(btn);
-
-  });
-
-}
-
-/* ========================= RENDER MAP ========================= */
-
 function renderMapPoints(){
 
   mapView.innerHTML = "";
@@ -80,23 +25,23 @@ function renderMapPoints(){
       point.style.left = m.x + "%";
       point.style.top = m.y + "%";
 
+      /* =========================
+         CLICK → PAGE MOVE
+      ========================= */
+
       point.onclick = () => {
 
-        mapInfo.innerHTML = `
-
-          <h3>${m.name}</h3>
-          <p>${m.description}</p>
-
-        `;
+        // 相対パスで移動
+        window.location.href =
+          `map/${m.path}`;
 
       };
+
+      /* hover tooltip代わり */
+      point.title = m.name;
 
       mapView.appendChild(point);
 
     });
 
 }
-
-/* ========================= SEARCH ========================= */
-
-search.addEventListener("input", renderMapPoints);

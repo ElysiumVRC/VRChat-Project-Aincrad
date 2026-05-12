@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Town of Beginnings",
+    "category": "city",
+    "x": 30,
+    "y": 60,
+
+    "path": "town/Town of Beginnings/Town of Beginnings.html",
+
+    "description": "はじまりの街。"
+  },
+
+  {
+    "name": "???",
+    "category": "region",
+    "x": 60,
+    "y": 40,
+
+    "path": "region/???/???.html",
+
+    "description": "クエストで集めるアイテムがある場所。"
+  }
+]

@@ -54,31 +54,35 @@ body{
 
 }
 
-/* SLIDER */
+/* =========================
+   SLIDER
+========================= */
 
 .hero-slider{
 
   display:flex;
 
-  width:400%;
+  width:100%;
   height:100%;
 
-  animation:slide 18s infinite;
+  animation:slide 20s infinite;
 
 }
 
 .hero-slider img{
 
-  width:100vw;
+  width:100%;
   height:100%;
-
-  object-fit:cover;
 
   flex-shrink:0;
 
+  object-fit:cover;
+
 }
 
-/* OVERLAY */
+/* =========================
+   DARK OVERLAY
+========================= */
 
 .hero::after{
 
@@ -254,12 +258,16 @@ body.light .hero::after{
 
 }
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
 
 .social-card{
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
 
   border-radius:14px;
@@ -291,7 +299,7 @@ body.light .hero::after{
 }
 
 /* =========================
-   INFO SECTION（追加）
+   INFO SECTION
 ========================= */
 
 .info{
@@ -326,7 +334,7 @@ body.light .hero::after{
 
 }
 
-/* LINE（ここが重要） */
+/* LINE */
 
 .info-line{
 
@@ -361,15 +369,24 @@ body.light .hero::after{
 }
 
 /* =========================
-   SLIDE
+   SLIDE ANIMATION
 ========================= */
 
 @keyframes slide{
 
-  0%,30%{ transform:translateX(0); }
-  35%,60%{ transform:translateX(-100vw); }
-  65%,90%{ transform:translateX(-200vw); }
-  100%{ transform:translateX(0); }
+  0%{ transform:translateX(0%); }
+  20%{ transform:translateX(0%); }
+
+  25%{ transform:translateX(-100%); }
+  45%{ transform:translateX(-100%); }
+
+  50%{ transform:translateX(-200%); }
+  70%{ transform:translateX(-200%); }
+
+  75%{ transform:translateX(-300%); }
+  95%{ transform:translateX(-300%); }
+
+  100%{ transform:translateX(0%); }
 
 }
 

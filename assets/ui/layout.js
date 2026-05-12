@@ -19,7 +19,7 @@ navbar.innerHTML = `
       トップページ
     </a>
 
-    <a href="../maps/maps.html">
+    <a href="../map/map.html">
       <i data-lucide="map"></i>
       マップ
     </a>

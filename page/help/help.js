@@ -42,7 +42,9 @@ function renderFAQ(data){
 
   faqList.innerHTML = "";
 
-  /* NO RESULT */
+  /* =========================
+     EMPTY
+  ========================= */
 
   if(data.length === 0){
 
@@ -58,13 +60,15 @@ function renderFAQ(data){
 
   }
 
+  /* =========================
+     CREATE FAQ
+  ========================= */
+
   data.forEach(faq => {
 
     let mediaHTML = "";
 
-    /* =========================
-       IMAGE
-    ========================= */
+    /* IMAGE */
 
     if(faq.image){
 
@@ -80,9 +84,7 @@ function renderFAQ(data){
 
     }
 
-    /* =========================
-       VIDEO
-    ========================= */
+    /* VIDEO */
 
     if(faq.video){
 
@@ -104,10 +106,6 @@ function renderFAQ(data){
       `;
 
     }
-
-    /* =========================
-       CREATE ITEM
-    ========================= */
 
     faqList.innerHTML += `
 
@@ -181,16 +179,9 @@ function filterFAQ(){
   const filtered =
     faqs.filter(faq => {
 
-      const question =
-        faq.question.toLowerCase();
-
-      const answer =
-        faq.answer.toLowerCase();
-
-      return (
-        question.includes(value) ||
-        answer.includes(value)
-      );
+      return faq.question
+        .toLowerCase()
+        .includes(value);
 
     });
 

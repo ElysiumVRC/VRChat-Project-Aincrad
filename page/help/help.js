@@ -42,10 +42,6 @@ function renderFAQ(data){
 
   faqList.innerHTML = "";
 
-  /* =========================
-     EMPTY
-  ========================= */
-
   if(data.length === 0){
 
     faqList.innerHTML = `
@@ -60,15 +56,9 @@ function renderFAQ(data){
 
   }
 
-  /* =========================
-     CREATE FAQ
-  ========================= */
-
   data.forEach(faq => {
 
     let mediaHTML = "";
-
-    /* IMAGE */
 
     if(faq.image){
 
@@ -83,8 +73,6 @@ function renderFAQ(data){
       `;
 
     }
-
-    /* VIDEO */
 
     if(faq.video){
 
@@ -113,9 +101,7 @@ function renderFAQ(data){
 
         <button class="faq-question">
 
-          <span class="faq-arrow">
-            ➤
-          </span>
+          <span class="faq-arrow">➤</span>
 
           <span class="faq-question-text">
             ${faq.question}
@@ -125,9 +111,9 @@ function renderFAQ(data){
 
         <div class="faq-answer">
 
-          <p class="faq-answer-text">
+          <div class="faq-answer-text">
             ${faq.answer}
-          </p>
+          </div>
 
           ${mediaHTML}
 
@@ -168,7 +154,7 @@ function addToggleEvents(){
 }
 
 /* =========================
-   FILTER
+   FILTER (question only)
 ========================= */
 
 function filterFAQ(){

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -9,52 +10,45 @@
 <link rel="stylesheet" href="../../assets/ui/layout.css">
 <link rel="stylesheet" href="map.css">
 
+<script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 <body>
 
-<div class="map-page">
+<div class="page-content">
 
-  <!-- LEFT MENU -->
-  <aside class="map-sidebar">
+  <h1 class="page-title">マップ</h1>
 
-    <input id="map-search" placeholder="エリア検索...">
+  <div class="map-layout">
 
-    <div id="area-list"></div>
+    <!-- LEFT -->
+    <aside class="map-sidebar">
 
-  </aside>
+      <input
+        id="map-search"
+        placeholder="エリア検索..."
+      >
 
-  <!-- RIGHT CONTENT -->
-  <main class="map-main">
+      <div id="map-category"></div>
 
-    <div class="map-header">
+    </aside>
 
-      <h1 id="area-title">エリア選択</h1>
+    <!-- RIGHT -->
+    <main class="map-main">
 
-      <p id="area-desc">エリア選択</p>
+      <div class="map-view" id="map-view"></div>
 
-    </div>
+      <div class="map-info" id="map-info">
+        マップを選択してください
+      </div>
 
-    <div class="map-container">
+    </main>
 
-      <img id="map-image" src="" alt="map">
-
-      <div id="map-points"></div>
-
-    </div>
-
-  </main>
-
-</div>
-
-<!-- POPUP -->
-<div id="popup" class="popup hidden">
-  <div class="popup-box">
-    <h3 id="popup-title"></h3>
-    <p id="popup-text"></p>
-    <button id="popup-close">閉じる</button>
   </div>
+
 </div>
 
+<script src="../../assets/ui/layout.js"></script>
 <script src="map.js"></script>
 
 </body>

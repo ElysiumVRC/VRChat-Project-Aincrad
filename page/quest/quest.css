@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f0f14;
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #1b1b24;
+  border: none;
+  color: white;
+  border-radius: 6px;
+}
+
+#tags {
+  margin-bottom: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background: #2a2a35;
+  padding: 5px 10px;
+  margin: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tag.active {
+  background: #5a5a7a;
+}
+
+.quest {
+  display: flex;
+  background: #1b1b24;
+  margin: 10px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.quest:hover {
+  transform: scale(1.01);
+}
+
+.quest img {
+  width: 160px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.quest-content {
+  padding: 10px;
+}
+
+.stats {
+  font-size: 12px;
+  color: #aaa;
+}

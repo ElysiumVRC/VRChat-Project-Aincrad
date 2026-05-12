@@ -44,6 +44,11 @@ navbar.innerHTML = `
       クエスト
     </a>
 
+    <a href="../help/help.html">
+    <i data-lucide="circle-help"></i>
+    ヘルプ
+    </a>
+
   </nav>
 
 </div>

@@ -1,111 +1,102 @@
-const areaList = document.getElementById("area-list");
+const mapView = document.getElementById("map-view");
+const mapInfo = document.getElementById("map-info");
 const search = document.getElementById("map-search");
+const categoryBox = document.getElementById("map-category");
 
-const title = document.getElementById("area-title");
-const desc = document.getElementById("area-desc");
+let maps = [];
+let activeCategory = "all";
 
-const mapImage = document.getElementById("map-image");
-const points = document.getElementById("map-points");
-
-const popup = document.getElementById("popup");
-const popupTitle = document.getElementById("popup-title");
-const popupText = document.getElementById("popup-text");
-
-document.getElementById("popup-close")
-  .onclick = () => popup.classList.add("hidden");
-
-let data = [];
-let currentArea = null;
-
-/* ================= LOAD ================= */
+/* ========================= LOAD ========================= */
 
 fetch("map.json")
-  .then(r => r.json())
-  .then(json => {
-    data = json;
-    renderAreas(data);
+  .then(res => res.json())
+  .then(data => {
+
+    maps = data;
+
+    createCategoryUI();
+    renderMapPoints();
+
   });
 
-/* ================= AREAS ================= */
+/* ========================= CATEGORY UI ========================= */
 
-function renderAreas(list){
+function createCategoryUI(){
 
-  areaList.innerHTML = "";
+  const categories = ["all","region","city","dungeon"];
 
-  list.forEach(area => {
+  categories.forEach(cat => {
 
     const btn = document.createElement("button");
+
     btn.className = "area-btn";
-    btn.textContent = area.name;
+    btn.textContent = cat;
 
     btn.onclick = () => {
-      selectArea(area);
+
+      activeCategory = cat;
+
+      document.querySelectorAll(".area-btn")
+        .forEach(b => b.classList.remove("active"));
+
+      btn.classList.add("active");
+
+      renderMapPoints();
+
     };
 
-    areaList.appendChild(btn);
+    categoryBox.appendChild(btn);
 
   });
 
 }
 
-/* ================= SELECT AREA ================= */
+/* ========================= RENDER MAP ========================= */
 
-function selectArea(area){
+function renderMapPoints(){
 
-  currentArea = area;
+  mapView.innerHTML = "";
 
-  title.textContent = area.name;
-  desc.textContent = area.description;
+  const keyword = search.value.toLowerCase();
 
-  mapImage.src = area.image;
+  maps
+    .filter(m => {
 
-  renderPoints(area.points);
+      const matchCategory =
+        activeCategory === "all" || m.category === activeCategory;
 
-}
+      const matchSearch =
+        m.name.toLowerCase().includes(keyword);
 
-/* ================= POINTS ================= */
+      return matchCategory && matchSearch;
 
-function renderPoints(list){
+    })
+    .forEach(m => {
 
-  points.innerHTML = "";
+      const point = document.createElement("div");
 
-  list.forEach(p => {
+      point.className = "map-point";
 
-    const el = document.createElement("div");
+      point.style.left = m.x + "%";
+      point.style.top = m.y + "%";
 
-    el.className = "point";
-    el.style.left = p.x + "%";
-    el.style.top = p.y + "%";
+      point.onclick = () => {
 
-    el.onclick = () => {
+        mapInfo.innerHTML = `
 
-      popupTitle.textContent = p.name;
-      popupText.textContent = p.text;
+          <h3>${m.name}</h3>
+          <p>${m.description}</p>
 
-      popup.classList.remove("hidden");
+        `;
 
-    };
+      };
 
-    points.appendChild(el);
-
-  });
-
-}
-
-/* ================= SEARCH ================= */
-
-search.addEventListener("input", () => {
-
-  const v = search.value.toLowerCase();
-
-  document.querySelectorAll(".area-btn")
-    .forEach(btn => {
-
-      btn.style.display =
-        btn.textContent.toLowerCase().includes(v)
-        ? ""
-        : "none";
+      mapView.appendChild(point);
 
     });
 
-});
+}
+
+/* ========================= SEARCH ========================= */
+
+search.addEventListener("input", renderMapPoints);

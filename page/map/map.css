@@ -1,130 +1,145 @@
-/* ===================== LAYOUT ===================== */
-
-.map-page{
-  display:flex;
-  height:100vh;
-  background:var(--bg);
-  color:var(--text);
+.page-title{
+  font-size:42px;
+  margin-bottom:24px;
 }
 
-/* ===================== SIDEBAR ===================== */
+/* ========================= LAYOUT ========================= */
+
+.map-layout{
+  display:flex;
+  gap:18px;
+}
+
+/* ========================= SIDEBAR ========================= */
 
 .map-sidebar{
+
   width:260px;
-  border-right:1px solid var(--border);
-  padding:16px;
-  overflow-y:auto;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:12px;
+
 }
 
 #map-search{
+
   width:100%;
-  padding:10px;
-  border-radius:10px;
+  padding:12px;
+
+  border-radius:12px;
+
   border:1px solid var(--border);
   background:var(--card);
   color:var(--text);
-  margin-bottom:12px;
+
+  outline:none;
+
 }
 
-/* AREA BUTTON */
+/* CATEGORY */
+
+.category-title{
+  font-size:14px;
+  opacity:0.8;
+  margin-top:10px;
+}
 
 .area-btn{
-  width:100%;
-  padding:10px;
-  margin-bottom:8px;
 
-  background:var(--card);
-  border:1px solid var(--border);
-  color:var(--text);
+  width:100%;
+
+  padding:10px;
+
+  margin-top:6px;
 
   border-radius:10px;
+
+  border:1px solid var(--border);
+
+  background:var(--card);
+  color:var(--text);
+
   cursor:pointer;
 
   transition:0.2s;
+
+  text-align:left;
+
 }
 
 .area-btn:hover{
   transform:translateX(4px);
+  border:1px solid #78b4ff;
 }
 
 .area-btn.active{
-  border:1px solid #78b4ff;
   background:rgba(120,180,255,0.2);
+  border:1px solid #78b4ff;
+  color:white;
 }
 
-/* ===================== MAIN ===================== */
+/* ========================= MAP ========================= */
 
 .map-main{
   flex:1;
-  padding:20px;
-}
-
-.map-header h1{
-  margin:0;
-  font-size:28px;
-}
-
-.map-header p{
-  opacity:0.8;
-}
-
-/* MAP */
-
-.map-container{
-  position:relative;
-  margin-top:20px;
-}
-
-#map-image{
-  width:100%;
-  max-height:600px;
-  object-fit:contain;
-  border-radius:16px;
-  border:1px solid var(--border);
-}
-
-/* POINTS */
-
-.point{
-  position:absolute;
-  width:14px;
-  height:14px;
-  background:#ff4d4d;
-  border-radius:50%;
-  cursor:pointer;
-  transform:translate(-50%, -50%);
-  box-shadow:0 0 10px rgba(255,0,0,0.6);
-}
-
-/* ===================== POPUP ===================== */
-
-.popup{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.6);
 
   display:flex;
-  align-items:center;
-  justify-content:center;
+  flex-direction:column;
+
+  gap:12px;
 }
 
-.popup.hidden{
-  display:none;
-}
+.map-view{
 
-.popup-box{
-  background:var(--card);
-  padding:20px;
-  border-radius:16px;
+  height:520px;
+
+  border-radius:18px;
+
   border:1px solid var(--border);
-  width:300px;
+
+  background:#0b0f16;
+
+  position:relative;
+
+  overflow:hidden;
+
 }
 
-#popup-close{
-  margin-top:10px;
-  width:100%;
-  padding:8px;
-  border:none;
-  border-radius:8px;
+/* clickable spots */
+
+.map-point{
+
+  position:absolute;
+
+  width:14px;
+  height:14px;
+
+  border-radius:50%;
+
+  background:#78b4ff;
+
+  box-shadow:0 0 10px rgba(120,180,255,0.7);
+
   cursor:pointer;
+
+}
+
+.map-point:hover{
+  transform:scale(1.3);
+}
+
+/* INFO */
+
+.map-info{
+
+  padding:16px;
+
+  border-radius:14px;
+
+  background:var(--card);
+
+  border:1px solid var(--border);
+
 }

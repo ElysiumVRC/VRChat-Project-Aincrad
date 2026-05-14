@@ -60,7 +60,7 @@ function renderQuests() {
         <div class="quest-content">
           <h3>${q.name}</h3>
           <div class="stats">
-            💰 Col: ${q.col} | EXP: ${q.exp} | GuildEXP: ${q.guildExp} | ⏱ ${q.timeLimit}
+             Col: ${q.col} | EXP: ${q.exp} | GuildEXP: ${q.guildExp} | ⏱ ${q.timeLimit}
           </div>
         </div>
       `;

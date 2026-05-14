@@ -3,7 +3,14 @@ const searchInput = document.getElementById("search");
 const tagsContainer = document.getElementById("tags");
 
 let monsters = [];
-let selectedTag = "All";
+
+let selectedTags = {
+
+  difficulty: "All",
+  type: "All",
+  floor: "All"
+
+};
 
 async function loadMonsters(){
 
@@ -12,46 +19,82 @@ async function loadMonsters(){
   monsters = await response.json();
 
   createTags();
+
   renderMonsters();
 
 }
 
 function createTags(){
 
-  const allTags = [
-    "All",
-    ...new Set(monsters.flatMap(m => m.tags))
-  ];
-
   tagsContainer.innerHTML = "";
 
-  allTags.forEach(tag => {
+  const categories = {
 
-    const btn = document.createElement("button");
+    difficulty: "難易度",
+    type: "種類",
+    floor: "階層"
 
-    btn.className = "tag";
-    btn.textContent = tag;
+  };
 
-    if(tag === selectedTag){
-      btn.classList.add("active");
-    }
+  for(const category in categories){
 
-    btn.onclick = () => {
+    const section = document.createElement("div");
 
-      selectedTag = tag;
+    section.className = "tag-section";
 
-      document.querySelectorAll(".tag")
-        .forEach(t => t.classList.remove("active"));
+    const title = document.createElement("h3");
 
-      btn.classList.add("active");
+    title.textContent = categories[category];
 
-      renderMonsters();
+    section.appendChild(title);
 
-    };
+    const row = document.createElement("div");
 
-    tagsContainer.appendChild(btn);
+    row.className = "tag-row";
 
-  });
+    const values = [
+
+      "All",
+
+      ...new Set(
+        monsters.map(m => m.tags[category])
+      )
+
+    ];
+
+    values.forEach(value => {
+
+      const btn = document.createElement("button");
+
+      btn.className = "tag";
+
+      btn.textContent = value;
+
+      if(selectedTags[category] === value){
+
+        btn.classList.add("active");
+
+      }
+
+      btn.onclick = () => {
+
+        selectedTags[category] = value;
+
+        createTags();
+
+        renderMonsters();
+
+      };
+
+      row.appendChild(btn);
+
+    });
+
+    section.appendChild(row);
+
+    tagsContainer.appendChild(section);
+
+  }
 
 }
 
@@ -66,11 +109,35 @@ function renderMonsters(){
     const matchSearch =
       monster.name.toLowerCase().includes(search);
 
-    const matchTag =
-      selectedTag === "All" ||
-      monster.tags.includes(selectedTag);
+    const matchDifficulty =
 
-    return matchSearch && matchTag;
+      selectedTags.difficulty === "All" ||
+
+      monster.tags.difficulty ===
+      selectedTags.difficulty;
+
+    const matchType =
+
+      selectedTags.type === "All" ||
+
+      monster.tags.type ===
+      selectedTags.type;
+
+    const matchFloor =
+
+      selectedTags.floor === "All" ||
+
+      monster.tags.floor ===
+      selectedTags.floor;
+
+    return (
+
+      matchSearch &&
+      matchDifficulty &&
+      matchType &&
+      matchFloor
+
+    );
 
   });
 
@@ -83,29 +150,55 @@ function renderMonsters(){
     card.href = monster.link;
 
     card.innerHTML = `
-      <img class="monster-image" src="${monster.image}">
+
+      <img
+        class="monster-image"
+        src="${monster.image}"
+        alt="${monster.name}"
+      >
 
       <div class="monster-content">
 
         <div class="monster-name">
+
           ${monster.name}
+
         </div>
 
         <div class="monster-stat">
+
           Col : ${monster.col}
+
         </div>
 
         <div class="monster-stat">
+
           EXP : ${monster.exp}
+
+        </div>
+
+        <div class="drop-title">
+
+          Item Drop
+
         </div>
 
         <div class="drop-list">
-          ${monster.drops.map(drop =>
-            `<div class="drop-item">${drop}</div>`
-          ).join("")}
+
+          ${monster.drops.map(drop => `
+
+            <div class="drop-item">
+
+              ${drop}
+
+            </div>
+
+          `).join("")}
+
         </div>
 
       </div>
+
     `;
 
     monsterList.appendChild(card);
@@ -114,6 +207,9 @@ function renderMonsters(){
 
 }
 
-searchInput.addEventListener("input", renderMonsters);
+searchInput.addEventListener(
+  "input",
+  renderMonsters
+);
 
 loadMonsters();

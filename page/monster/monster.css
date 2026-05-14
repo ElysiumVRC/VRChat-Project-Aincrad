@@ -12,35 +12,37 @@
 
 }
 
-/* ダークモード対応 */
-
+/* ダークモード（どの実装でも対応） */
 html.dark,
-body.dark{
+body.dark,
+[data-theme="dark"]{
 
-  --bg:#0f0f0f;
+  --bg:#0f0f14;
   --text:#ffffff;
 
-  --card:#161616;
-  --border:#2b2b2b;
+  --card:#1b1b24;
+  --border:#2a2a35;
 
-  --tag:#1f1f1f;
-  --tagActive:#ffffff;
-  --tagActiveText:#000000;
+  --tag:#2a2a35;
+  --tagActive:#5a5a7a;
+  --tagActiveText:#ffffff;
 
 }
 
 /* 全体 */
-
 html,
 body{
+
+  margin:0;
+  padding:0;
 
   background:var(--bg);
   color:var(--text);
 
+  font-family:Arial;
 }
 
 /* ページ */
-
 .monster-page{
 
   padding:40px;
@@ -48,7 +50,6 @@ body{
 }
 
 /* タイトル */
-
 .page-title{
 
   font-size:42px;
@@ -59,97 +60,55 @@ body{
 }
 
 /* 検索 */
-
 .search-box{
 
   width:100%;
+  padding:14px;
 
-  padding:16px;
+  margin-bottom:20px;
 
-  border-radius:14px;
-
+  border-radius:10px;
   border:1px solid var(--border);
 
   background:var(--card);
-
   color:var(--text);
 
-  font-size:16px;
-
-  margin-bottom:30px;
-
   outline:none;
-
 }
 
-.search-box::placeholder{
+/* タグエリア */
+.tags{
 
-  color:gray;
+  margin-bottom:20px;
 
 }
 
 /* タグ */
-
-.tag-section{
-
-  margin-bottom:26px;
-
-}
-
-.tag-section h3{
-
-  margin-bottom:12px;
-
-  color:var(--text);
-
-  font-size:20px;
-
-}
-
-.tag-row{
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:10px;
-
-}
-
 .tag{
 
-  padding:10px 18px;
+  display:inline-block;
 
-  border:none;
+  padding:6px 12px;
+  margin:4px;
 
   border-radius:999px;
 
   background:var(--tag);
-
   color:var(--text);
 
   cursor:pointer;
-
-  transition:0.2s;
-
-}
-
-.tag:hover{
-
-  transform:translateY(-2px);
+  user-select:none;
 
 }
 
 .tag.active{
 
   background:var(--tagActive);
-
   color:var(--tagActiveText);
 
 }
 
-/* モンスター一覧 */
-
+/* グリッド */
 .monster-grid{
 
   display:grid;
@@ -157,144 +116,105 @@ body{
   grid-template-columns:
   repeat(auto-fill,minmax(320px,1fr));
 
-  gap:24px;
-
-  margin-top:40px;
+  gap:20px;
 
 }
 
 /* カード */
-
 .monster-card{
+
+  display:block;
+
+  text-decoration:none;
 
   background:var(--card);
 
   border:1px solid var(--border);
 
-  border-radius:22px;
+  border-radius:16px;
 
   overflow:hidden;
 
-  text-decoration:none;
-
-  transition:0.25s;
-
   color:var(--text);
+
+  transition:0.2s;
 
 }
 
 .monster-card:hover{
 
-  transform:translateY(-6px);
+  transform:translateY(-4px);
 
 }
 
 /* 画像 */
-
 .monster-image{
 
   width:100%;
-  height:240px;
+  height:220px;
 
   object-fit:cover;
 
 }
 
-/* 内容 */
-
+/* 中身 */
 .monster-content{
 
-  padding:22px;
+  padding:16px;
 
 }
 
 /* 名前 */
-
 .monster-name{
 
-  font-size:28px;
-
-  margin-bottom:14px;
-
-  color:var(--text);
+  font-size:24px;
+  margin-bottom:10px;
 
 }
 
 /* ステータス */
-
 .monster-stat{
 
-  margin-bottom:8px;
-
-  font-size:16px;
-
-  color:var(--text);
+  font-size:14px;
+  margin-bottom:6px;
 
 }
 
-/* ドロップタイトル */
-
-.drop-title{
-
-  margin-top:18px;
-  margin-bottom:10px;
-
-  font-size:18px;
-
-  color:var(--text);
-
-}
-
-/* ドロップ一覧 */
-
+/* ドロップ */
 .drop-list{
 
   display:flex;
-
   flex-wrap:wrap;
 
-  gap:10px;
+  gap:6px;
+
+  margin-top:10px;
 
 }
 
-/* ドロップアイテム */
-
 .drop-item{
+
+  padding:5px 10px;
+
+  border-radius:999px;
 
   background:rgba(255,255,255,0.08);
 
   border:1px solid var(--border);
 
-  padding:8px 14px;
-
-  border-radius:999px;
-
-  color:var(--text);
-
-  font-size:14px;
+  font-size:12px;
 
 }
 
 /* スマホ */
-
-@media(max-width:700px){
+@media(max-width:768px){
 
   .monster-page{
-
-    padding:20px;
-
+    padding:15px;
   }
 
   .page-title{
-
-    font-size:32px;
-
-  }
-
-  .monster-name{
-
-    font-size:24px;
-
+    font-size:28px;
   }
 
 }

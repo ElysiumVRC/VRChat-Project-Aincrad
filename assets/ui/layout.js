@@ -34,7 +34,7 @@ navbar.innerHTML = `
       アイテム
     </a>
 
-    <a href="../monster/items.html">
+    <a href="../monster/monster.html">
       <i data-lucide="panda"></i>
       モンスター
     </a>

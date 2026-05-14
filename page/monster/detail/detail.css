@@ -1,0 +1,34 @@
+.monster-detail{
+  display:flex;
+  gap:40px;
+  padding:40px;
+  color:white;
+}
+
+.detail-image{
+  width:500px;
+  border-radius:20px;
+}
+
+.detail-content h1{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.detail-stat{
+  margin-bottom:10px;
+  font-size:20px;
+}
+
+.drop-list{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.drop-item{
+  background:#1a1a1a;
+  padding:10px 16px;
+  border-radius:999px;
+}

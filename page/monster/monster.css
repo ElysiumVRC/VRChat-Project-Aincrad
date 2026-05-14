@@ -12,22 +12,6 @@
 
 }
 
-/* ===== ダークモード（どの実装でも拾う） ===== */
-html.dark,
-body.dark,
-[data-theme="dark"]{
-
-  --bg:#0f0f14;
-  --text:#ffffff;
-
-  --card:#1b1b24;
-  --border:#2a2a35;
-
-  --tag:#2a2a35;
-  --tagActive:#5a5a7a;
-  --tagActiveText:#ffffff;
-
-}
 
 /* ===== 基本 ===== */
 html,
@@ -43,11 +27,6 @@ body{
 
 }
 
-/* ===== layout.js対策（上書き防止） ===== */
-body{
-  background:var(--bg) !important;
-  color:var(--text) !important;
-}
 
 /* ===== ページ ===== */
 .monster-page{

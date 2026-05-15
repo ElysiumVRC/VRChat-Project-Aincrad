@@ -7,279 +7,210 @@ document.getElementById("search");
 const tagsContainer =
 document.getElementById("tags");
 
-let monsters = [];
+let monsters=[];
 
-let selectedTags = {
-
-  difficulty:"All",
-  type:"All",
-  floor:"All"
-
+let selectedTags={
+difficulty:"All",
+type:"All",
+floor:"All"
 };
-
-/* =========================
-   LOAD
-========================= */
 
 async function loadMonsters(){
 
-  const response =
-  await fetch("./monster.json");
+const response=
+await fetch("./monster.json");
 
-  monsters =
-  await response.json();
+monsters=
+await response.json();
 
-  createTags();
-
-  renderMonsters();
+createTags();
+renderMonsters();
 
 }
-
-/* =========================
-   TAGS
-========================= */
 
 function createTags(){
 
-  tagsContainer.innerHTML="";
+tagsContainer.innerHTML="";
 
-  const categories={
+const categories={
+difficulty:"難易度",
+type:"種類",
+floor:"階層"
+};
 
-    difficulty:"難易度",
-    type:"種類",
-    floor:"階層"
+for(const category in categories){
 
-  };
+const section=
+document.createElement("div");
 
-  for(const category in categories){
+section.className=
+"tag-section";
 
-    const section =
-    document.createElement("div");
+const title=
+document.createElement("h3");
 
-    section.className=
-    "tag-section";
+title.textContent=
+categories[category];
 
-    const title =
-    document.createElement("h3");
+section.appendChild(title);
 
-    title.textContent=
-    categories[category];
+const row=
+document.createElement("div");
 
-    section.appendChild(title);
+row.className=
+"tag-row";
 
-    const row =
-    document.createElement("div");
+const values=[
+"All",
+...new Set(
+monsters.map(
+m=>m.tags[category]
+)
+)
+];
 
-    row.className=
-    "tag-row";
+values.forEach(value=>{
 
-    const values=[
+const btn=
+document.createElement("button");
 
-      "All",
+btn.className="tag";
+btn.textContent=value;
 
-      ...new Set(
-        monsters.map(
-          m=>m.tags[category]
-        )
-      )
+if(
+selectedTags[
+category
+]===value
+){
+btn.classList.add("active");
+}
 
-    ];
+btn.onclick=()=>{
 
-    values.forEach(value=>{
+selectedTags[
+category
+]=value;
 
-      const btn=
-      document.createElement("button");
+createTags();
+renderMonsters();
 
-      btn.className=
-      "tag";
+};
 
-      btn.textContent=
-      value;
+row.appendChild(btn);
 
-      if(
-        selectedTags[
-          category
-        ]===value
-      ){
+});
 
-        btn.classList.add(
-          "active"
-        );
+section.appendChild(row);
 
-      }
-
-      btn.onclick=()=>{
-
-        selectedTags[
-          category
-        ]=value;
-
-        createTags();
-
-        renderMonsters();
-
-      };
-
-      row.appendChild(btn);
-
-    });
-
-    section.appendChild(row);
-
-    tagsContainer.appendChild(
-      section
-    );
-
-  }
+tagsContainer.appendChild(
+section
+);
 
 }
 
-/* =========================
-   RENDER
-========================= */
+}
 
 function renderMonsters(){
 
-  const search=
-  searchInput.value
-  .toLowerCase();
+const search=
+searchInput.value
+.toLowerCase();
 
-  monsterList.innerHTML="";
+monsterList.innerHTML="";
 
-  const filtered=
-  monsters.filter(monster=>{
+const filtered=
+monsters.filter(monster=>{
 
-    const matchSearch=
+const matchSearch=
+monster.name
+.toLowerCase()
+.includes(search);
 
-      monster.name
-      .toLowerCase()
-      .includes(search);
+const matchDifficulty=
+selectedTags.difficulty==="All"||
+monster.tags.difficulty===
+selectedTags.difficulty;
 
-    const matchDifficulty=
+const matchType=
+selectedTags.type==="All"||
+monster.tags.type===
+selectedTags.type;
 
-      selectedTags
-      .difficulty==="All"
+const matchFloor=
+selectedTags.floor==="All"||
+monster.tags.floor===
+selectedTags.floor;
 
-      ||
+return(
+matchSearch&&
+matchDifficulty&&
+matchType&&
+matchFloor
+);
 
-      monster.tags
-      .difficulty===
+});
 
-      selectedTags
-      .difficulty;
+filtered.forEach(monster=>{
 
-    const matchType=
+const card=
+document.createElement("a");
 
-      selectedTags
-      .type==="All"
+card.className=
+"monster-card";
 
-      ||
+card.href=
+`detail/detail.html?name=${
+encodeURIComponent(
+monster.name
+)
+}`;
 
-      monster.tags
-      .type===
-      selectedTags
-      .type;
+card.innerHTML=`
 
-    const matchFloor=
+<img
+class="monster-image"
+src="${monster.image}"
+alt="${monster.name}"
+>
 
-      selectedTags
-      .floor==="All"
+<div class="monster-content">
 
-      ||
+<div class="monster-name">
+${monster.name}
+</div>
 
-      monster.tags
-      .floor===
-      selectedTags
-      .floor;
+<div class="monster-stat">
+Col : ${monster.col}
+</div>
 
-    return(
+<div class="monster-stat">
+EXP : ${monster.exp}
+</div>
 
-      matchSearch &&
-      matchDifficulty &&
-      matchType &&
-      matchFloor
+<div class="drop-list">
 
-    );
+${monster.drops.map(drop=>`
 
-  });
+<div class="drop-item">
+${drop}
+</div>
 
-  filtered.forEach(monster=>{
+`).join("")}
 
-    const card=
-    document.createElement("a");
+</div>
 
-    card.className=
-    "monster-card";
+</div>
+`;
 
-    /* DETAIL PAGEへ */
-    card.href=
-    `detail/detail.html?name=${
-      encodeURIComponent(
-        monster.name
-      )
-    }`;
+monsterList.appendChild(card);
 
-    card.innerHTML=`
-
-      <img
-        class="monster-image"
-        src="${monster.image}"
-        alt="${monster.name}"
-      >
-
-      <div class="monster-content">
-
-        <div class="monster-name">
-          ${monster.name}
-        </div>
-
-        <div class="monster-stat">
-          Col : ${monster.col}
-        </div>
-
-        <div class="monster-stat">
-          EXP : ${monster.exp}
-        </div>
-
-        <div class="drop-title">
-          Item Drop
-        </div>
-
-        <div class="drop-list">
-
-          ${monster.drops.map(drop=>`
-
-            <div class="drop-item">
-              ${drop}
-            </div>
-
-          `).join("")}
-
-        </div>
-
-      </div>
-
-    `;
-
-    monsterList.appendChild(
-      card
-    );
-
-  });
+});
 
 }
 
-/* =========================
-   SEARCH
-========================= */
-
 searchInput.addEventListener(
-  "input",
-  renderMonsters
+"input",
+renderMonsters
 );
-
-/* =========================
-   START
-========================= */
 
 loadMonsters();

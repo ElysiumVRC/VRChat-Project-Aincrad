@@ -1,39 +1,30 @@
 const monsterList =
-document.getElementById(
-  "monsterList"
-);
+document.getElementById("monsterList");
 
 const searchInput =
-document.getElementById(
-  "search"
-);
+document.getElementById("search");
 
 const tagsContainer =
-document.getElementById(
-  "tags"
-);
+document.getElementById("tags");
 
-let monsters=[];
+let monsters = [];
 
-let selectedTags={
-
+let selectedTags = {
   difficulty:"All",
   type:"All",
   floor:"All"
-
 };
 
 async function loadMonsters(){
 
-  const response=
+  const res =
   await fetch("./monster.json");
 
-  monsters=
-  await response.json();
+  monsters =
+  await res.json();
 
   createTags();
   renderMonsters();
-
 }
 
 function createTags(){
@@ -41,108 +32,62 @@ function createTags(){
   tagsContainer.innerHTML="";
 
   const categories={
-
     difficulty:"難易度",
     type:"種類",
     floor:"階層"
-
   };
 
   for(const category in categories){
 
-    const section=
-    document.createElement(
-      "div"
-    );
+    const section =
+    document.createElement("div");
 
-    section.className=
-    "tag-section";
+    section.className="tag-section";
 
-    const title=
-    document.createElement(
-      "h3"
-    );
-
-    title.textContent=
-    categories[category];
-
-    section.appendChild(
-      title
-    );
+    section.innerHTML=
+    `<h3>${categories[category]}</h3>
+     <div class="tag-row"></div>`;
 
     const row=
-    document.createElement(
-      "div"
-    );
-
-    row.className=
-    "tag-row";
+    section.querySelector(".tag-row");
 
     const values=[
-
       "All",
-
       ...new Set(
         monsters.map(
-          m=>
-          m.tags[category]
+          m=>m.tags[category]
         )
       )
-
     ];
 
     values.forEach(value=>{
 
       const btn=
-      document.createElement(
-        "button"
-      );
+      document.createElement("button");
 
-      btn.className=
-      "tag";
-
-      btn.textContent=
-      value;
+      btn.className="tag";
+      btn.textContent=value;
 
       if(
-        selectedTags[
-          category
-        ]===value
+        selectedTags[category]
+        === value
       ){
-
-        btn.classList.add(
-          "active"
-        );
-
+        btn.classList.add("active");
       }
 
       btn.onclick=()=>{
 
-        selectedTags[
-          category
-        ]=value;
+        selectedTags[category]=value;
 
         createTags();
         renderMonsters();
-
       };
 
-      row.appendChild(
-        btn
-      );
-
+      row.appendChild(btn);
     });
 
-    section.appendChild(
-      row
-    );
-
-    tagsContainer.appendChild(
-      section
-    );
-
+    tagsContainer.appendChild(section);
   }
-
 }
 
 function renderMonsters(){
@@ -156,7 +101,7 @@ function renderMonsters(){
   const filtered=
   monsters.filter(monster=>{
 
-    return(
+    return (
 
       monster.name
       .toLowerCase()
@@ -165,122 +110,72 @@ function renderMonsters(){
       &&
 
       (
-        selectedTags
-        .difficulty==="All"
-
+        selectedTags.difficulty==="All"
         ||
-
-        monster.tags
-        .difficulty===
-
-        selectedTags
-        .difficulty
+        monster.tags.difficulty===
+        selectedTags.difficulty
       )
 
       &&
 
       (
-        selectedTags
-        .type==="All"
-
+        selectedTags.type==="All"
         ||
-
-        monster.tags
-        .type===
-
-        selectedTags
-        .type
+        monster.tags.type===
+        selectedTags.type
       )
 
       &&
 
       (
-        selectedTags
-        .floor==="All"
-
+        selectedTags.floor==="All"
         ||
-
-        monster.tags
-        .floor===
-
-        selectedTags
-        .floor
+        monster.tags.floor===
+        selectedTags.floor
       )
-
     );
-
   });
 
-  filtered.forEach(
-  monster=>{
+  filtered.forEach(monster=>{
 
     const card=
-    document.createElement(
-      "a"
-    );
+    document.createElement("a");
 
     card.className=
     "monster-card";
 
     card.href=
-    `./detail/detail.html?monster=${encodeURIComponent(monster.name)}`;
+    monster.link;
 
     card.innerHTML=`
 
       <img
       class="monster-image"
-      src="${monster.image}"
-      alt="${monster.name}"
-      >
+      src="${monster.image}">
 
-      <div
-      class="monster-content">
+      <div class="monster-content">
 
-        <div
-        class="monster-name">
-
+        <div class="monster-name">
           ${monster.name}
-
         </div>
 
-        <div
-        class="monster-stat">
-
-          Col :
-          ${monster.col}
-
+        <div class="monster-stat">
+          Col : ${monster.col}
         </div>
 
-        <div
-        class="monster-stat">
-
-          EXP :
-          ${monster.exp}
-
+        <div class="monster-stat">
+          EXP : ${monster.exp}
         </div>
 
-        <div
-        class="drop-title">
-
-          Item Drop
-
-        </div>
-
-        <div
-        class="drop-list">
-
-          ${monster.drops
-          .map(drop=>`
-
-            <div
-            class="drop-item">
-
-              ${drop}
-
-            </div>
-
-          `).join("")}
-
+        <div class="drop-list">
+          ${
+            monster.drops
+            .map(
+              d=>
+              `<div class="drop-item">${d}</div>`
+            )
+            .join("")
+          }
         </div>
 
       </div>
@@ -288,13 +183,10 @@ function renderMonsters(){
 
     monsterList
     .appendChild(card);
-
   });
-
 }
 
-searchInput
-.addEventListener(
+searchInput.addEventListener(
   "input",
   renderMonsters
 );

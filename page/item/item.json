@@ -5,7 +5,7 @@
     "type":"消耗品",
     "buy":"50",
     "sell":"25",
-    "obtain":"ショップ",
+    "obtain":"初期所持,ショップ,クエスト,宝箱",
     "link":"itemdetail/Potion.html",
 
     "categories":{

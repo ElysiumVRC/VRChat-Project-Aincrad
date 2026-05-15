@@ -5,10 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>モンスター一覧</title>
+<title>Frenzy Boar</title>
 
-<link rel="stylesheet" href="../../assets/ui/layout.css">
-<link rel="stylesheet" href="monster.css">
+<link rel="stylesheet" href="../../../assets/ui/layout.css">
+<link rel="stylesheet" href="detail.css">
 
 <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -17,35 +17,40 @@
 
 <div class="page-content">
 
-  <section class="monster-page">
+  <section class="monster-detail">
 
-    <h1 class="page-title">
-      モンスター一覧
-    </h1>
-
-    <input
-      type="text"
-      id="search"
-      class="search-box"
-      placeholder="モンスター検索..."
+    <img
+      src="../monsterpng/boar.png"
+      class="detail-image"
     >
 
-    <div
-      id="tags"
-      class="tags"
-    ></div>
+    <div class="detail-content">
 
-    <div
-      id="monsterList"
-      class="monster-grid"
-    ></div>
+      <h1>Frenzy Boar</h1>
+
+      <div class="detail-stat">
+        Col : 20
+      </div>
+
+      <div class="detail-stat">
+        EXP : 50
+      </div>
+
+      <h2>アイテムドロップ</h2>
+
+      <div class="drop-list">
+        <div class="drop-item">Metal Scraps</div>
+        <div class="drop-item">Quartanier</div>
+      </div>
+
+    </div>
 
   </section>
 
 </div>
 
-<script src="../../assets/ui/layout.js"></script>
-<script src="monster.js"></script>
+<script src="../../../assets/ui/layout.js"></script>
+<script src="detail.js"></script>
 
 </body>
 </html>

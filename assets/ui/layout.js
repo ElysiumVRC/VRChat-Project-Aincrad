@@ -14,44 +14,44 @@ navbar.innerHTML = `
 
   <nav class="nav-links">
 
-    <a href="../top/top.html">
+    <a href="/VRChat-Project-Aincrad/page/top/top.html">
       <i data-lucide="house"></i>
       トップページ
     </a>
 
-    <a href="../kihon/kihon.html">
+    <a href="/VRChat-Project-Aincrad/page/kihon/kihon.html">
       <i data-lucide="book-type"></i>
       基本操作
     </a>
 
-    <a href="../map/map.html">
+    <a href="/VRChat-Project-Aincrad/page/map/map.html">
       <i data-lucide="map"></i>
       マップ
     </a>
 
-    <a href="../weapons/weapons.html">
+    <a href="/VRChat-Project-Aincrad/page/weapons/weapons.html">
       <i data-lucide="sword"></i>
       武器
     </a>
 
-    <a href="../item/item.html">
+    <a href="/VRChat-Project-Aincrad/page/item/item.html">
       <i data-lucide="backpack"></i>
       アイテム
     </a>
 
-    <a href="../monster/monster.html">
+    <a href="/VRChat-Project-Aincrad/page/monster/monster.html">
       <i data-lucide="panda"></i>
       モンスター
     </a>
 
-    <a href="../quest/quest.html">
+    <a href="/VRChat-Project-Aincrad/page/quest/quest.html">
       <i data-lucide="file-text"></i>
       クエスト
     </a>
 
-    <a href="../help/help.html">
-    <i data-lucide="circle-question-mark"></i>
-    ヘルプ
+    <a href="/VRChat-Project-Aincrad/page/help/help.html">
+      <i data-lucide="circle-question-mark"></i>
+      ヘルプ
     </a>
 
   </nav>
@@ -80,13 +80,11 @@ function applyTheme(theme){
   if(theme === "light"){
 
     document.body.classList.add("light");
-
     themeBtn.textContent = "☀";
 
   }else{
 
     document.body.classList.remove("light");
-
     themeBtn.textContent = "🌙";
 
   }

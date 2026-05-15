@@ -1,22 +1,33 @@
-const monsterList = document.getElementById("monsterList");
-const searchInput = document.getElementById("search");
-const tagsContainer = document.getElementById("tags");
+const monsterList =
+document.getElementById("monsterList");
+
+const searchInput =
+document.getElementById("search");
+
+const tagsContainer =
+document.getElementById("tags");
 
 let monsters = [];
 
 let selectedTags = {
 
-  difficulty: "All",
-  type: "All",
-  floor: "All"
+  difficulty:"All",
+  type:"All",
+  floor:"All"
 
 };
 
+/* =========================
+   LOAD
+========================= */
+
 async function loadMonsters(){
 
-  const response = await fetch("./monster.json");
+  const response =
+  await fetch("./monster.json");
 
-  monsters = await response.json();
+  monsters =
+  await response.json();
 
   createTags();
 
@@ -24,61 +35,84 @@ async function loadMonsters(){
 
 }
 
+/* =========================
+   TAGS
+========================= */
+
 function createTags(){
 
-  tagsContainer.innerHTML = "";
+  tagsContainer.innerHTML="";
 
-  const categories = {
+  const categories={
 
-    difficulty: "難易度",
-    type: "種類",
-    floor: "階層"
+    difficulty:"難易度",
+    type:"種類",
+    floor:"階層"
 
   };
 
   for(const category in categories){
 
-    const section = document.createElement("div");
+    const section =
+    document.createElement("div");
 
-    section.className = "tag-section";
+    section.className=
+    "tag-section";
 
-    const title = document.createElement("h3");
+    const title =
+    document.createElement("h3");
 
-    title.textContent = categories[category];
+    title.textContent=
+    categories[category];
 
     section.appendChild(title);
 
-    const row = document.createElement("div");
+    const row =
+    document.createElement("div");
 
-    row.className = "tag-row";
+    row.className=
+    "tag-row";
 
-    const values = [
+    const values=[
 
       "All",
 
       ...new Set(
-        monsters.map(m => m.tags[category])
+        monsters.map(
+          m=>m.tags[category]
+        )
       )
 
     ];
 
-    values.forEach(value => {
+    values.forEach(value=>{
 
-      const btn = document.createElement("button");
+      const btn=
+      document.createElement("button");
 
-      btn.className = "tag";
+      btn.className=
+      "tag";
 
-      btn.textContent = value;
+      btn.textContent=
+      value;
 
-      if(selectedTags[category] === value){
+      if(
+        selectedTags[
+          category
+        ]===value
+      ){
 
-        btn.classList.add("active");
+        btn.classList.add(
+          "active"
+        );
 
       }
 
-      btn.onclick = () => {
+      btn.onclick=()=>{
 
-        selectedTags[category] = value;
+        selectedTags[
+          category
+        ]=value;
 
         createTags();
 
@@ -92,45 +126,73 @@ function createTags(){
 
     section.appendChild(row);
 
-    tagsContainer.appendChild(section);
+    tagsContainer.appendChild(
+      section
+    );
 
   }
 
 }
 
+/* =========================
+   RENDER
+========================= */
+
 function renderMonsters(){
 
-  const search = searchInput.value.toLowerCase();
+  const search=
+  searchInput.value
+  .toLowerCase();
 
-  monsterList.innerHTML = "";
+  monsterList.innerHTML="";
 
-  const filtered = monsters.filter(monster => {
+  const filtered=
+  monsters.filter(monster=>{
 
-    const matchSearch =
-      monster.name.toLowerCase().includes(search);
+    const matchSearch=
 
-    const matchDifficulty =
+      monster.name
+      .toLowerCase()
+      .includes(search);
 
-      selectedTags.difficulty === "All" ||
+    const matchDifficulty=
 
-      monster.tags.difficulty ===
-      selectedTags.difficulty;
+      selectedTags
+      .difficulty==="All"
 
-    const matchType =
+      ||
 
-      selectedTags.type === "All" ||
+      monster.tags
+      .difficulty===
 
-      monster.tags.type ===
-      selectedTags.type;
+      selectedTags
+      .difficulty;
 
-    const matchFloor =
+    const matchType=
 
-      selectedTags.floor === "All" ||
+      selectedTags
+      .type==="All"
 
-      monster.tags.floor ===
-      selectedTags.floor;
+      ||
 
-    return (
+      monster.tags
+      .type===
+      selectedTags
+      .type;
+
+    const matchFloor=
+
+      selectedTags
+      .floor==="All"
+
+      ||
+
+      monster.tags
+      .floor===
+      selectedTags
+      .floor;
+
+    return(
 
       matchSearch &&
       matchDifficulty &&
@@ -141,15 +203,23 @@ function renderMonsters(){
 
   });
 
-  filtered.forEach(monster => {
+  filtered.forEach(monster=>{
 
-    const card = document.createElement("a");
+    const card=
+    document.createElement("a");
 
-    card.className = "monster-card";
+    card.className=
+    "monster-card";
 
-    card.href = monster.link;
+    /* DETAIL PAGEへ */
+    card.href=
+    `detail/detail.html?name=${
+      encodeURIComponent(
+        monster.name
+      )
+    }`;
 
-    card.innerHTML = `
+    card.innerHTML=`
 
       <img
         class="monster-image"
@@ -160,37 +230,27 @@ function renderMonsters(){
       <div class="monster-content">
 
         <div class="monster-name">
-
           ${monster.name}
-
         </div>
 
         <div class="monster-stat">
-
           Col : ${monster.col}
-
         </div>
 
         <div class="monster-stat">
-
           EXP : ${monster.exp}
-
         </div>
 
         <div class="drop-title">
-
           Item Drop
-
         </div>
 
         <div class="drop-list">
 
-          ${monster.drops.map(drop => `
+          ${monster.drops.map(drop=>`
 
             <div class="drop-item">
-
               ${drop}
-
             </div>
 
           `).join("")}
@@ -201,15 +261,25 @@ function renderMonsters(){
 
     `;
 
-    monsterList.appendChild(card);
+    monsterList.appendChild(
+      card
+    );
 
   });
 
 }
 
+/* =========================
+   SEARCH
+========================= */
+
 searchInput.addEventListener(
   "input",
   renderMonsters
 );
+
+/* =========================
+   START
+========================= */
 
 loadMonsters();

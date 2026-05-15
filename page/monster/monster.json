@@ -4,15 +4,15 @@
     "image":"./monsterpng/Frenzy Boar.png",
     "col":20,
     "exp":50,
-    "drops":[
-      "Metal Scraps",
-      "Quartanier"
-    ],
+    "drops":["Metal Scraps","Quartanier"],
+
     "tags":{
       "difficulty":"1Lv",
       "type":"Boar",
       "floor":"1階層"
-    }
+    },
+
+    "link":"./detail/Frenzy Boar.html"
   },
 
   {
@@ -20,15 +20,15 @@
     "image":"./monsterpng/Wasp.png",
     "col":35,
     "exp":60,
-    "drops":[
-      "Metal Scraps",
-      "Vespid Rapier"
-    ],
+    "drops":["Metal Scraps","Vespid Rapier"],
+
     "tags":{
       "difficulty":"3Lv",
       "type":"Wasp",
       "floor":"1階層"
-    }
+    },
+
+    "link":"./detail/Wasp.html"
   },
 
   {
@@ -36,15 +36,15 @@
     "image":"./monsterpng/Slate Boar.png",
     "col":50,
     "exp":75,
-    "drops":[
-      "Metal Scraps",
-      "Quartanier"
-    ],
+    "drops":["Metal Scraps","Quartanier"],
+
     "tags":{
       "difficulty":"3Lv",
       "type":"Boar",
       "floor":"1階層"
-    }
+    },
+
+    "link":"./detail/Slate Boar.html"
   },
 
   {
@@ -52,15 +52,15 @@
     "image":"./monsterpng/Little Nepenthes.png",
     "col":65,
     "exp":95,
-    "drops":[
-      "Metal Scraps",
-      "Blood Thorn"
-    ],
+    "drops":["Metal Scraps","Blood Thorn"],
+
     "tags":{
       "difficulty":"5Lv",
       "type":"Nepenthes",
       "floor":"1階層"
-    }
+    },
+
+    "link":"./detail/Little Nepenthes.html"
   },
 
   {
@@ -68,15 +68,15 @@
     "image":"./monsterpng/Ghost Boar.png",
     "col":40,
     "exp":50,
-    "drops":[
-      "Potion",
-      "Quartanier"
-    ],
+    "drops":["Potion","Quartanier"],
+
     "tags":{
       "difficulty":"1Lv",
       "type":"Boar",
       "floor":"1階層"
-    }
+    },
+
+    "link":"./detail/Ghost Boar.html"
   },
 
   {
@@ -84,14 +84,15 @@
     "image":"./monsterpng/Flowered Nepenthes.png",
     "col":75,
     "exp":160,
-    "drops":[
-      "Blood Thorn"
-    ],
+    "drops":["Blood Thorn"],
+
     "tags":{
       "difficulty":"8Lv",
       "type":"Nepenthes",
       "floor":"1階層"
-    }
+    },
+
+    "link":"./detail/Flowered Nepenthes.html"
   },
 
   {
@@ -99,15 +100,15 @@
     "image":"./monsterpng/Ink Boar.png",
     "col":80,
     "exp":90,
-    "drops":[
-      "Med.Ink.Sac",
-      "Quartanier"
-    ],
+    "drops":["Med.Ink.Sac","Quartanier"],
+
     "tags":{
       "difficulty":"8Lv",
       "type":"Boar",
       "floor":"1階層"
-    }
+    },
+
+    "link":"./detail/Ink Boar.html"
   },
 
   {
@@ -115,15 +116,15 @@
     "image":"./monsterpng/Ink Wasp.png",
     "col":75,
     "exp":80,
-    "drops":[
-      "Sml.Ink.Sac",
-      "Vespid Rapier"
-    ],
+    "drops":["Sml.Ink.Sac","Vespid Rapier"],
+
     "tags":{
       "difficulty":"8Lv",
       "type":"Wasp",
       "floor":"1階層"
-    }
+    },
+
+    "link":"./detail/Ink Wasp.html"
   },
 
   {
@@ -131,14 +132,14 @@
     "image":"./monsterpng/Ink Nepenthes.png",
     "col":80,
     "exp":175,
-    "drops":[
-      "Lrg.Ink.Sac",
-      "Blood Thorn"
-    ],
+    "drops":["Lrg.Ink.Sac","Blood Thorn"],
+
     "tags":{
       "difficulty":"8Lv",
       "type":"Nepenthes",
       "floor":"1階層"
-    }
+    },
+
+    "link":"./detail/Ink Nepenthes.html"
   }
 ]

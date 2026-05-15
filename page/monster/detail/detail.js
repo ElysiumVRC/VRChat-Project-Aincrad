@@ -1,129 +1,222 @@
-const params=
+const params =
 new URLSearchParams(
-location.search
+  window.location.search
 );
 
-const monster=
-params.get("name");
+const monsterName =
+params.get("monster");
 
-fetch(`attack/${monster}.json`)
+if(!monsterName){
+
+  document.body.innerHTML =
+  "<h1>モンスターが指定されていません</h1>";
+
+  throw new Error();
+}
+
+fetch(`./attack/${monsterName}.json`)
 .then(res=>res.json())
-.then(data=>renderMonster(data));
+.then(data=>{
+
+  renderMonster(data);
+
+});
 
 function renderMonster(data){
 
-const root=
-document.getElementById(
-"monster-detail"
-);
+  document.querySelector("h1")
+  .textContent = data.name;
 
-root.innerHTML=`
+  document.querySelector(".detail-image")
+  .src = data.image;
 
-<div class="top-section">
+  document.querySelectorAll(
+    ".detail-stat"
+  )[0].textContent =
+  `Col : ${data.stats.col}`;
 
-<div>
+  document.querySelectorAll(
+    ".detail-stat"
+  )[1].textContent =
+  `EXP : ${data.stats.exp}`;
 
-<h1>${data.name}</h1>
+  /* ===== DROP ===== */
 
-<img
-src="${data.image}"
-class="detail-image"
->
+  const dropList =
+  document.querySelector(
+    ".drop-list"
+  );
 
-</div>
+  dropList.innerHTML = "";
 
-<div>
+  data.drops.forEach(drop=>{
 
-<div>Col : ${data.col}</div>
-<div>EXP : ${data.exp}</div>
+    dropList.innerHTML += `
+      <div class="drop-item">
+        ${drop}
+      </div>
+    `;
 
-<h2>ドロップ</h2>
+  });
 
-<div class="drop-list">
+  /* ===== MAP ===== */
 
-${data.drops.map(d=>
-`<div class="drop-item">${d}</div>`
-).join("")}
+  const mapButtons =
+  document.getElementById(
+    "map-buttons"
+  );
 
-</div>
+  const mapImage =
+  document.getElementById(
+    "map-image"
+  );
 
-</div>
+  mapButtons.innerHTML = "";
 
-</div>
+  data.maps.forEach(map=>{
 
-<h2>出現場所</h2>
+    const btn =
+    document.createElement(
+      "button"
+    );
 
-<div class="map-wrap">
+    btn.className =
+    "map-btn";
 
-<div class="map-tabs">
+    btn.textContent =
+    map.label;
 
-${data.maps.map(m=>
-`<button onclick="switchMap('${m.image}')">${m.label}</button>`
-).join("")}
+    btn.onclick=()=>{
 
-</div>
+      mapImage.src =
+      map.image;
 
-<img
-id="mapImage"
-src="${data.maps[0].image}"
-class="map-image"
->
+      document
+      .querySelectorAll(
+        ".map-btn"
+      )
+      .forEach(b=>
+        b.classList.remove(
+          "active"
+        )
+      );
 
-</div>
+      btn.classList.add(
+        "active"
+      );
 
-<h2>攻撃方法</h2>
+    };
 
-<div class="attack-list">
+    if(
+      map.id ===
+      data.defaultMap
+    ){
 
-${data.attacks.map((a,i)=>`
+      btn.classList.add(
+        "active"
+      );
 
-<div class="attack-item">
+      mapImage.src =
+      map.image;
 
-<button
-class="attack-toggle"
-onclick="toggleAttack(${i})"
->
-➤ ${a.name}
-</button>
+    }
 
-<div
-class="attack-content"
-id="attack-${i}"
->
+    mapButtons
+    .appendChild(btn);
 
-<video controls class="attack-video">
-<source src="${a.video}">
-</video>
+  });
 
-<p>${a.desc}</p>
+  /* ===== ATTACK ===== */
 
-</div>
+  const attackList =
+  document.getElementById(
+    "attack-list"
+  );
 
-</div>
+  attackList.innerHTML = "";
 
-`).join("")}
+  data.attacks.forEach(
+  attack=>{
 
-</div>
-`;
+    const item =
+    document.createElement(
+      "div"
+    );
 
-}
+    item.className =
+    "attack-item";
 
-function switchMap(src){
+    item.innerHTML = `
 
-document.getElementById(
-"mapImage"
-).src=src;
+      <button
+        class="attack-btn"
+      >
 
-}
+        <span class="arrow">
+          ➤
+        </span>
 
-function toggleAttack(i){
+        ${attack.title}
 
-document
-.getElementById(
-`attack-${i}`
-)
-.classList.toggle(
-"open"
-);
+      </button>
+
+      <div
+        class="attack-content"
+      >
+
+        <video
+          controls
+          preload="metadata"
+        >
+          <source
+            src="${attack.video}"
+            type="video/mp4"
+          >
+        </video>
+
+        <p>
+          ${attack.description}
+        </p>
+
+      </div>
+    `;
+
+    const btn =
+    item.querySelector(
+      ".attack-btn"
+    );
+
+    const content =
+    item.querySelector(
+      ".attack-content"
+    );
+
+    const arrow =
+    item.querySelector(
+      ".arrow"
+    );
+
+    btn.onclick=()=>{
+
+      const open =
+      content.classList
+      .contains("open");
+
+      content.classList
+      .toggle("open");
+
+      arrow.textContent =
+      open
+      ? "➤"
+      : "▼";
+
+    };
+
+    attackList
+    .appendChild(item);
+
+  });
+
+  lucide.createIcons();
 
 }

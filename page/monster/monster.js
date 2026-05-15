@@ -1,216 +1,259 @@
-const monsterList =
-document.getElementById("monsterList");
+const params =
+new URLSearchParams(
+  window.location.search
+);
 
-const searchInput =
-document.getElementById("search");
+const monsterName =
+params.get("monster");
 
-const tagsContainer =
-document.getElementById("tags");
+if(!monsterName){
 
-let monsters=[];
+  document.body.innerHTML =
+  "<h1>モンスターが指定されていません</h1>";
 
-let selectedTags={
-difficulty:"All",
-type:"All",
-floor:"All"
-};
-
-async function loadMonsters(){
-
-const response=
-await fetch("./monster.json");
-
-monsters=
-await response.json();
-
-createTags();
-renderMonsters();
-
+  throw new Error();
 }
 
-function createTags(){
+fetch(`./attack/${monsterName}.json`)
+.then(res=>res.json())
+.then(data=>{
 
-tagsContainer.innerHTML="";
-
-const categories={
-difficulty:"難易度",
-type:"種類",
-floor:"階層"
-};
-
-for(const category in categories){
-
-const section=
-document.createElement("div");
-
-section.className=
-"tag-section";
-
-const title=
-document.createElement("h3");
-
-title.textContent=
-categories[category];
-
-section.appendChild(title);
-
-const row=
-document.createElement("div");
-
-row.className=
-"tag-row";
-
-const values=[
-"All",
-...new Set(
-monsters.map(
-m=>m.tags[category]
-)
-)
-];
-
-values.forEach(value=>{
-
-const btn=
-document.createElement("button");
-
-btn.className="tag";
-btn.textContent=value;
-
-if(
-selectedTags[
-category
-]===value
-){
-btn.classList.add("active");
-}
-
-btn.onclick=()=>{
-
-selectedTags[
-category
-]=value;
-
-createTags();
-renderMonsters();
-
-};
-
-row.appendChild(btn);
+  renderMonster(data);
 
 });
 
-section.appendChild(row);
+function renderMonster(data){
 
-tagsContainer.appendChild(
-section
-);
+  document.querySelector("h1")
+  .textContent =
+  data.name || "";
+
+  document.querySelector(
+    ".detail-image"
+  ).src =
+  data.image || "";
+
+  /* ===== COL / EXP ===== */
+
+  const col =
+    data.stats?.col ??
+    data.col ??
+    0;
+
+  const exp =
+    data.stats?.exp ??
+    data.exp ??
+    0;
+
+  const stats =
+  document.querySelectorAll(
+    ".detail-stat"
+  );
+
+  if(stats[0]){
+
+    stats[0].textContent =
+    `Col : ${col}`;
+
+  }
+
+  if(stats[1]){
+
+    stats[1].textContent =
+    `EXP : ${exp}`;
+
+  }
+
+  /* ===== DROP ===== */
+
+  const dropList =
+  document.querySelector(
+    ".drop-list"
+  );
+
+  if(dropList){
+
+    dropList.innerHTML="";
+
+    (data.drops||[])
+    .forEach(drop=>{
+
+      dropList.innerHTML+=`
+        <div class="drop-item">
+          ${drop}
+        </div>
+      `;
+
+    });
+
+  }
+
+  /* ===== MAP ===== */
+
+  const mapButtons =
+  document.getElementById(
+    "map-buttons"
+  );
+
+  const mapImage =
+  document.getElementById(
+    "map-image"
+  );
+
+  if(mapButtons&&mapImage){
+
+    mapButtons.innerHTML="";
+
+    (data.maps||[])
+    .forEach(map=>{
+
+      const btn=
+      document.createElement(
+        "button"
+      );
+
+      btn.className=
+      "map-btn";
+
+      btn.textContent=
+      map.label;
+
+      btn.onclick=()=>{
+
+        mapImage.src=
+        map.image;
+
+        document
+        .querySelectorAll(
+          ".map-btn"
+        )
+        .forEach(b=>
+          b.classList.remove(
+            "active"
+          )
+        );
+
+        btn.classList.add(
+          "active"
+        );
+
+      };
+
+      if(
+        map.id===
+        data.defaultMap
+      ){
+
+        btn.classList.add(
+          "active"
+        );
+
+        mapImage.src=
+        map.image;
+
+      }
+
+      mapButtons
+      .appendChild(btn);
+
+    });
+
+  }
+
+  /* ===== ATTACK ===== */
+
+  const attackList =
+  document.getElementById(
+    "attack-list"
+  );
+
+  if(attackList){
+
+    attackList.innerHTML="";
+
+    (data.attacks||[])
+    .forEach(attack=>{
+
+      const item=
+      document.createElement(
+        "div"
+      );
+
+      item.className=
+      "attack-item";
+
+      item.innerHTML=`
+
+        <button
+          class="attack-btn"
+        >
+
+          <span class="arrow">
+            ➤
+          </span>
+
+          ${attack.title||attack.name}
+
+        </button>
+
+        <div
+          class="attack-content"
+        >
+
+          <video
+            controls
+            preload="metadata"
+          >
+            <source
+              src="${attack.video}"
+              type="video/mp4">
+          </video>
+
+          <p>
+            ${attack.description||attack.desc||""}
+          </p>
+
+        </div>
+      `;
+
+      const btn=
+      item.querySelector(
+        ".attack-btn"
+      );
+
+      const content=
+      item.querySelector(
+        ".attack-content"
+      );
+
+      const arrow=
+      item.querySelector(
+        ".arrow"
+      );
+
+      btn.onclick=()=>{
+
+        const open=
+        content.classList
+        .contains("open");
+
+        content.classList
+        .toggle("open");
+
+        arrow.textContent=
+        open
+        ? "➤"
+        : "▼";
+
+      };
+
+      attackList
+      .appendChild(item);
+
+    });
+
+  }
+
+  lucide.createIcons();
 
 }
-
-}
-
-function renderMonsters(){
-
-const search=
-searchInput.value
-.toLowerCase();
-
-monsterList.innerHTML="";
-
-const filtered=
-monsters.filter(monster=>{
-
-const matchSearch=
-monster.name
-.toLowerCase()
-.includes(search);
-
-const matchDifficulty=
-selectedTags.difficulty==="All"||
-monster.tags.difficulty===
-selectedTags.difficulty;
-
-const matchType=
-selectedTags.type==="All"||
-monster.tags.type===
-selectedTags.type;
-
-const matchFloor=
-selectedTags.floor==="All"||
-monster.tags.floor===
-selectedTags.floor;
-
-return(
-matchSearch&&
-matchDifficulty&&
-matchType&&
-matchFloor
-);
-
-});
-
-filtered.forEach(monster=>{
-
-const card=
-document.createElement("a");
-
-card.className=
-"monster-card";
-
-card.href=
-`detail/detail.html?name=${
-encodeURIComponent(
-monster.name
-)
-}`;
-
-card.innerHTML=`
-
-<img
-class="monster-image"
-src="${monster.image}"
-alt="${monster.name}"
->
-
-<div class="monster-content">
-
-<div class="monster-name">
-${monster.name}
-</div>
-
-<div class="monster-stat">
-Col : ${monster.col}
-</div>
-
-<div class="monster-stat">
-EXP : ${monster.exp}
-</div>
-
-<div class="drop-list">
-
-${monster.drops.map(drop=>`
-
-<div class="drop-item">
-${drop}
-</div>
-
-`).join("")}
-
-</div>
-
-</div>
-`;
-
-monsterList.appendChild(card);
-
-});
-
-}
-
-searchInput.addEventListener(
-"input",
-renderMonsters
-);
-
-loadMonsters();

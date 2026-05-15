@@ -1,222 +1,144 @@
-const params =
-new URLSearchParams(
-  window.location.search
-);
+const path =
+location.pathname
+.split("/")
+.pop()
+.replace(".html","");
 
-const monsterName =
-params.get("monster");
+async function loadMonster(){
 
-if(!monsterName){
+  const res =
+  await fetch(
+    `./attack/${path}.json`
+  );
 
-  document.body.innerHTML =
-  "<h1>モンスターが指定されていません</h1>";
-
-  throw new Error();
-}
-
-fetch(`./attack/${monsterName}.json`)
-.then(res=>res.json())
-.then(data=>{
-
-  renderMonster(data);
-
-});
-
-function renderMonster(data){
+  const data =
+  await res.json();
 
   document.querySelector("h1")
-  .textContent = data.name;
+  .textContent=data.name;
 
-  document.querySelector(".detail-image")
-  .src = data.image;
-
-  document.querySelectorAll(
-    ".detail-stat"
-  )[0].textContent =
-  `Col : ${data.stats.col}`;
+  document.querySelector(
+    ".detail-image"
+  ).src=data.image;
 
   document.querySelectorAll(
     ".detail-stat"
-  )[1].textContent =
-  `EXP : ${data.stats.exp}`;
+  )[0].textContent=
+  `Col : ${data.col}`;
 
-  /* ===== DROP ===== */
+  document.querySelectorAll(
+    ".detail-stat"
+  )[1].textContent=
+  `EXP : ${data.exp}`;
 
-  const dropList =
   document.querySelector(
     ".drop-list"
-  );
+  ).innerHTML=
+  data.drops.map(
+    d=>
+    `<div class="drop-item">${d}</div>`
+  ).join("");
 
-  dropList.innerHTML = "";
+  loadMaps(data.maps);
+  loadAttacks(data.attacks);
+}
 
-  data.drops.forEach(drop=>{
+function loadMaps(maps){
 
-    dropList.innerHTML += `
-      <div class="drop-item">
-        ${drop}
-      </div>
-    `;
+  const tabs=
+  document.getElementById("map-tabs");
 
-  });
+  const img=
+  document.getElementById("map-image");
 
-  /* ===== MAP ===== */
+  tabs.innerHTML="";
 
-  const mapButtons =
-  document.getElementById(
-    "map-buttons"
-  );
+  maps.forEach((map,i)=>{
 
-  const mapImage =
-  document.getElementById(
-    "map-image"
-  );
+    const btn=
+    document.createElement("button");
 
-  mapButtons.innerHTML = "";
-
-  data.maps.forEach(map=>{
-
-    const btn =
-    document.createElement(
-      "button"
-    );
-
-    btn.className =
-    "map-btn";
-
-    btn.textContent =
+    btn.textContent=
     map.label;
 
     btn.onclick=()=>{
 
-      mapImage.src =
+      img.src=
       map.image;
-
-      document
-      .querySelectorAll(
-        ".map-btn"
-      )
-      .forEach(b=>
-        b.classList.remove(
-          "active"
-        )
-      );
-
-      btn.classList.add(
-        "active"
-      );
-
     };
 
-    if(
-      map.id ===
-      data.defaultMap
-    ){
-
-      btn.classList.add(
-        "active"
-      );
-
-      mapImage.src =
+    if(i===0){
+      img.src=
       map.image;
-
     }
 
-    mapButtons
-    .appendChild(btn);
-
+    tabs.appendChild(btn);
   });
+}
 
-  /* ===== ATTACK ===== */
+function loadAttacks(attacks){
 
-  const attackList =
+  const container=
   document.getElementById(
     "attack-list"
   );
 
-  attackList.innerHTML = "";
+  container.innerHTML="";
 
-  data.attacks.forEach(
-  attack=>{
+  attacks.forEach(atk=>{
 
-    const item =
-    document.createElement(
-      "div"
-    );
+    const div=
+    document.createElement("div");
 
-    item.className =
-    "attack-item";
+    div.className=
+    "attack-box";
 
-    item.innerHTML = `
+    div.innerHTML=`
 
-      <button
-        class="attack-btn"
-      >
-
-        <span class="arrow">
-          ➤
-        </span>
-
-        ${attack.title}
-
+      <button class="attack-toggle">
+        <span class="arrow">▶</span>
+        ${atk.name}
       </button>
 
-      <div
-        class="attack-content"
-      >
+      <div class="attack-content">
 
-        <video
-          controls
-          preload="metadata"
-        >
-          <source
-            src="${attack.video}"
-            type="video/mp4"
-          >
+        <video controls>
+          <source src="${atk.video}">
         </video>
 
-        <p>
-          ${attack.description}
-        </p>
+        <p>${atk.desc}</p>
 
       </div>
     `;
 
-    const btn =
-    item.querySelector(
-      ".attack-btn"
+    const btn=
+    div.querySelector(
+      ".attack-toggle"
     );
 
-    const content =
-    item.querySelector(
+    const content=
+    div.querySelector(
       ".attack-content"
     );
 
-    const arrow =
-    item.querySelector(
+    const arrow=
+    div.querySelector(
       ".arrow"
     );
 
     btn.onclick=()=>{
 
-      const open =
-      content.classList
-      .contains("open");
+      const open=
+      content.classList.toggle(
+        "open"
+      );
 
-      content.classList
-      .toggle("open");
-
-      arrow.textContent =
-      open
-      ? "➤"
-      : "▼";
-
+      arrow.textContent=
+      open ? "▼":"▶";
     };
 
-    attackList
-    .appendChild(item);
-
+    container.appendChild(div);
   });
-
-  lucide.createIcons();
-
 }
+
+loadMonster();

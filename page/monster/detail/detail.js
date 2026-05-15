@@ -1,154 +1,139 @@
-const path = location.pathname
-  .split("/")
-  .pop()
-  .replace(".html", "");
+const path =
+decodeURIComponent(
+location.pathname
+.split("/")
+.pop()
+.replace(".html","")
+);
 
 async function loadMonster(){
 
-  const res = await fetch(
-    `./attack/${path}.json`
-  );
+const res =
+await fetch(`./attack/${path}.json`);
 
-  const data = await res.json();
+const data =
+await res.json();
 
-  /* ========= 基本情報 ========= */
+/* top */
 
-  document.querySelector("h1").textContent =
-    data.name;
+document.querySelector("h1").textContent =
+data.name;
 
-  document.querySelector(".detail-image").src =
-    data.image;
+document.querySelector(".detail-image").src =
+data.image;
 
-  document.querySelectorAll(".detail-stat")[0]
-    .textContent =
-    `Col : ${data.stats.col}`;
+document.querySelectorAll(".detail-stat")[0].textContent =
+`Col : ${data.stats.col}`;
 
-  document.querySelectorAll(".detail-stat")[1]
-    .textContent =
-    `EXP : ${data.stats.exp}`;
+document.querySelectorAll(".detail-stat")[1].textContent =
+`EXP : ${data.stats.exp}`;
 
-  document.querySelector(".drop-list").innerHTML =
-    data.drops.map(drop =>
-      `<div class="drop-item">${drop}</div>`
-    ).join("");
+document.querySelector(".drop-list").innerHTML =
+data.drops.map(d=>
+`<div class="drop-item">${d}</div>`
+).join("");
 
-  /* ========= マップ ========= */
+loadMaps(data.maps,data.defaultMap);
+loadAttacks(data.attacks);
 
-  loadMaps(
-    data.maps,
-    data.defaultMap
-  );
-
-  /* ========= 攻撃 ========= */
-
-  loadAttacks(
-    data.attacks
-  );
 }
 
-function loadMaps(maps, defaultMap){
+function loadMaps(maps,defaultMap){
 
-  const tabs =
-    document.getElementById("map-tabs");
+const tabs =
+document.getElementById("map-tabs");
 
-  const img =
-    document.getElementById("map-image");
+const img =
+document.getElementById("map-image");
 
-  tabs.innerHTML = "";
+tabs.innerHTML="";
 
-  maps.forEach(map=>{
+maps.forEach(map=>{
 
-    const btn =
-      document.createElement("button");
+const btn =
+document.createElement("button");
 
-    btn.textContent =
-      map.label;
+btn.textContent =
+map.label;
 
-    btn.onclick = ()=>{
+if(map.id===defaultMap){
+btn.classList.add("active");
+img.src=map.image;
+}
 
-      img.src =
-        map.image;
-    };
+btn.onclick=()=>{
 
-    if(map.id===defaultMap){
-      img.src =
-        map.image;
-    }
+document
+.querySelectorAll("#map-tabs button")
+.forEach(b=>b.classList.remove("active"));
 
-    tabs.appendChild(btn);
+btn.classList.add("active");
 
-  });
+img.src=map.image;
+
+};
+
+tabs.appendChild(btn);
+
+});
+
 }
 
 function loadAttacks(attacks){
 
-  const container =
-    document.getElementById(
-      "attack-list"
-    );
+const container =
+document.getElementById("attack-list");
 
-  container.innerHTML = "";
+container.innerHTML="";
 
-  attacks.forEach(atk=>{
+attacks.forEach(atk=>{
 
-    const div =
-      document.createElement("div");
+const div =
+document.createElement("div");
 
-    div.className =
-      "attack-item";
+div.className="attack-box";
 
-    div.innerHTML = `
+div.innerHTML=`
 
-      <button class="attack-toggle">
-        <span class="arrow">▶</span>
-        ${atk.title}
-      </button>
+<button class="attack-toggle">
+<span class="arrow">▶</span>
+${atk.title}
+</button>
 
-      <div class="attack-content">
+<div class="attack-content">
 
-        <video
-          class="attack-video"
-          controls
-        >
-          <source src="${atk.video}">
-        </video>
+<video class="attack-video" controls>
+<source src="${atk.video}">
+</video>
 
-        <p>
-          ${atk.description}
-        </p>
+<p>${atk.description}</p>
 
-      </div>
-    `;
+</div>
+`;
 
-    const btn =
-      div.querySelector(
-        ".attack-toggle"
-      );
+const btn =
+div.querySelector(".attack-toggle");
 
-    const content =
-      div.querySelector(
-        ".attack-content"
-      );
+const content =
+div.querySelector(".attack-content");
 
-    const arrow =
-      div.querySelector(
-        ".arrow"
-      );
+const arrow =
+div.querySelector(".arrow");
 
-    btn.onclick = ()=>{
+btn.onclick=()=>{
 
-      const open =
-        content.classList.toggle(
-          "open"
-        );
+const open =
+content.classList.toggle("open");
 
-      arrow.textContent =
-        open ? "▼" : "▶";
-    };
+arrow.textContent =
+open ? "▼" : "▶";
 
-    container.appendChild(div);
+};
 
-  });
+container.appendChild(div);
+
+});
+
 }
 
 loadMonster();

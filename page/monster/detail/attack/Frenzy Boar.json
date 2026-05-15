@@ -1,0 +1,49 @@
+{
+  "name": "Frenzy Boar",
+  "image": "../monsterpng/Frenzy Boar.png",
+  "col": 20,
+  "exp": 50,
+
+  "drops": [
+    "Metal Scraps",
+    "Quartanier"
+  ],
+
+  "maps": [
+    {
+      "label": "1階層",
+      "image": "../map/Frenzy Boar/floor1.png"
+    },
+    {
+      "label": "ダンジョン",
+      "image": "../map/Frenzy Boar/dungeon1.png"
+    },
+    {
+      "label": "2階層",
+      "image": "../map/Frenzy Boar/floor2.png"
+    }
+  ],
+
+  "attacks": [
+    {
+      "name": "突進-1",
+      "video": "../attackvideo/Frenzy Boar/attack1.mp4",
+      "desc": "前方に突進攻撃"
+    },
+    {
+      "name": "突進-2",
+      "video": "../attackvideo/Frenzy Boar/attack2.mp4",
+      "desc": "前方に突進攻撃"
+    },
+    {
+      "name": "突進-3",
+      "video": "../attackvideo/Frenzy Boar/attack3.mp4",
+      "desc": "プレイヤーが離れると突進してくる。"
+    },
+    {
+      "name": "後退-突進",
+      "video": "../attackvideo/Frenzy Boar/attack4.mp4",
+      "desc": "一度後退してから突進攻撃。"
+    }
+  ]
+}

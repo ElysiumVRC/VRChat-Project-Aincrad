@@ -1,111 +1,97 @@
-const params =
-new URLSearchParams(
-  window.location.search
+const monsterList =
+document.getElementById(
+  "monsterList"
 );
 
-const monsterName =
-params.get("monster");
+const searchInput =
+document.getElementById(
+  "search"
+);
 
-if(!monsterName){
+const tagsContainer =
+document.getElementById(
+  "tags"
+);
 
-  document.body.innerHTML =
-  "<h1>モンスターが指定されていません</h1>";
+let monsters=[];
 
-  throw new Error();
+let selectedTags={
+
+  difficulty:"All",
+  type:"All",
+  floor:"All"
+
+};
+
+async function loadMonsters(){
+
+  const response=
+  await fetch("./monster.json");
+
+  monsters=
+  await response.json();
+
+  createTags();
+  renderMonsters();
+
 }
 
-fetch(`./attack/${monsterName}.json`)
-.then(res=>res.json())
-.then(data=>{
+function createTags(){
 
-  renderMonster(data);
+  tagsContainer.innerHTML="";
 
-});
+  const categories={
 
-function renderMonster(data){
+    difficulty:"難易度",
+    type:"種類",
+    floor:"階層"
 
-  document.querySelector("h1")
-  .textContent =
-  data.name || "";
+  };
 
-  document.querySelector(
-    ".detail-image"
-  ).src =
-  data.image || "";
+  for(const category in categories){
 
-  /* ===== COL / EXP ===== */
+    const section=
+    document.createElement(
+      "div"
+    );
 
-  const col =
-    data.stats?.col ??
-    data.col ??
-    0;
+    section.className=
+    "tag-section";
 
-  const exp =
-    data.stats?.exp ??
-    data.exp ??
-    0;
+    const title=
+    document.createElement(
+      "h3"
+    );
 
-  const stats =
-  document.querySelectorAll(
-    ".detail-stat"
-  );
+    title.textContent=
+    categories[category];
 
-  if(stats[0]){
+    section.appendChild(
+      title
+    );
 
-    stats[0].textContent =
-    `Col : ${col}`;
+    const row=
+    document.createElement(
+      "div"
+    );
 
-  }
+    row.className=
+    "tag-row";
 
-  if(stats[1]){
+    const values=[
 
-    stats[1].textContent =
-    `EXP : ${exp}`;
+      "All",
 
-  }
+      ...new Set(
+        monsters.map(
+          m=>
+          m.tags[category]
+        )
+      )
 
-  /* ===== DROP ===== */
+    ];
 
-  const dropList =
-  document.querySelector(
-    ".drop-list"
-  );
-
-  if(dropList){
-
-    dropList.innerHTML="";
-
-    (data.drops||[])
-    .forEach(drop=>{
-
-      dropList.innerHTML+=`
-        <div class="drop-item">
-          ${drop}
-        </div>
-      `;
-
-    });
-
-  }
-
-  /* ===== MAP ===== */
-
-  const mapButtons =
-  document.getElementById(
-    "map-buttons"
-  );
-
-  const mapImage =
-  document.getElementById(
-    "map-image"
-  );
-
-  if(mapButtons&&mapImage){
-
-    mapButtons.innerHTML="";
-
-    (data.maps||[])
-    .forEach(map=>{
+    values.forEach(value=>{
 
       const btn=
       document.createElement(
@@ -113,147 +99,204 @@ function renderMonster(data){
       );
 
       btn.className=
-      "map-btn";
+      "tag";
 
       btn.textContent=
-      map.label;
-
-      btn.onclick=()=>{
-
-        mapImage.src=
-        map.image;
-
-        document
-        .querySelectorAll(
-          ".map-btn"
-        )
-        .forEach(b=>
-          b.classList.remove(
-            "active"
-          )
-        );
-
-        btn.classList.add(
-          "active"
-        );
-
-      };
+      value;
 
       if(
-        map.id===
-        data.defaultMap
+        selectedTags[
+          category
+        ]===value
       ){
 
         btn.classList.add(
           "active"
         );
 
-        mapImage.src=
-        map.image;
-
       }
-
-      mapButtons
-      .appendChild(btn);
-
-    });
-
-  }
-
-  /* ===== ATTACK ===== */
-
-  const attackList =
-  document.getElementById(
-    "attack-list"
-  );
-
-  if(attackList){
-
-    attackList.innerHTML="";
-
-    (data.attacks||[])
-    .forEach(attack=>{
-
-      const item=
-      document.createElement(
-        "div"
-      );
-
-      item.className=
-      "attack-item";
-
-      item.innerHTML=`
-
-        <button
-          class="attack-btn"
-        >
-
-          <span class="arrow">
-            ➤
-          </span>
-
-          ${attack.title||attack.name}
-
-        </button>
-
-        <div
-          class="attack-content"
-        >
-
-          <video
-            controls
-            preload="metadata"
-          >
-            <source
-              src="${attack.video}"
-              type="video/mp4">
-          </video>
-
-          <p>
-            ${attack.description||attack.desc||""}
-          </p>
-
-        </div>
-      `;
-
-      const btn=
-      item.querySelector(
-        ".attack-btn"
-      );
-
-      const content=
-      item.querySelector(
-        ".attack-content"
-      );
-
-      const arrow=
-      item.querySelector(
-        ".arrow"
-      );
 
       btn.onclick=()=>{
 
-        const open=
-        content.classList
-        .contains("open");
+        selectedTags[
+          category
+        ]=value;
 
-        content.classList
-        .toggle("open");
-
-        arrow.textContent=
-        open
-        ? "➤"
-        : "▼";
+        createTags();
+        renderMonsters();
 
       };
 
-      attackList
-      .appendChild(item);
+      row.appendChild(
+        btn
+      );
 
     });
 
+    section.appendChild(
+      row
+    );
+
+    tagsContainer.appendChild(
+      section
+    );
+
   }
 
-  lucide.createIcons();
+}
+
+function renderMonsters(){
+
+  const search=
+  searchInput.value
+  .toLowerCase();
+
+  monsterList.innerHTML="";
+
+  const filtered=
+  monsters.filter(monster=>{
+
+    return(
+
+      monster.name
+      .toLowerCase()
+      .includes(search)
+
+      &&
+
+      (
+        selectedTags
+        .difficulty==="All"
+
+        ||
+
+        monster.tags
+        .difficulty===
+
+        selectedTags
+        .difficulty
+      )
+
+      &&
+
+      (
+        selectedTags
+        .type==="All"
+
+        ||
+
+        monster.tags
+        .type===
+
+        selectedTags
+        .type
+      )
+
+      &&
+
+      (
+        selectedTags
+        .floor==="All"
+
+        ||
+
+        monster.tags
+        .floor===
+
+        selectedTags
+        .floor
+      )
+
+    );
+
+  });
+
+  filtered.forEach(
+  monster=>{
+
+    const card=
+    document.createElement(
+      "a"
+    );
+
+    card.className=
+    "monster-card";
+
+    card.href=
+    `./detail/detail.html?monster=${encodeURIComponent(monster.name)}`;
+
+    card.innerHTML=`
+
+      <img
+      class="monster-image"
+      src="${monster.image}"
+      alt="${monster.name}"
+      >
+
+      <div
+      class="monster-content">
+
+        <div
+        class="monster-name">
+
+          ${monster.name}
+
+        </div>
+
+        <div
+        class="monster-stat">
+
+          Col :
+          ${monster.col}
+
+        </div>
+
+        <div
+        class="monster-stat">
+
+          EXP :
+          ${monster.exp}
+
+        </div>
+
+        <div
+        class="drop-title">
+
+          Item Drop
+
+        </div>
+
+        <div
+        class="drop-list">
+
+          ${monster.drops
+          .map(drop=>`
+
+            <div
+            class="drop-item">
+
+              ${drop}
+
+            </div>
+
+          `).join("")}
+
+        </div>
+
+      </div>
+    `;
+
+    monsterList
+    .appendChild(card);
+
+  });
 
 }
+
+searchInput
+.addEventListener(
+  "input",
+  renderMonsters
+);
+
+loadMonsters();

@@ -1,0 +1,19 @@
+[
+  {
+    "name":"Potion",
+    "image":"itempng/Potion.png",
+    "type":"消耗品",
+    "buy":"50",
+    "sell":"25",
+    "obtain":"ショップ",
+    "link":"itemdetail/Potion.html",
+
+    "categories":{
+      "種類":"消耗品",
+      "入手":"初期所持"
+      "入手":"ショップ",
+      "入手":"クエスト",
+      "入手":"宝箱"
+    }
+  }
+]

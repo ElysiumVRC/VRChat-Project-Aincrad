@@ -1,109 +1,84 @@
-const maps = [
+const params = new URLSearchParams(location.search);
+const monster = params.get("name");
 
-{
-name:"1階層",
-image:"../detail/map/Frenzy boar/Frenzy Boar_floor1.png"
-},
+fetch(`attack/${monster}.json`)
+.then(res=>res.json())
+.then(data=>renderMonster(data));
 
-{
-name:"ダンジョン",
-image:"../detail/map/Frenzy boar/Frenzy Boar_dungeon.png"
-},
+function renderMonster(data){
 
-{
-name:"2階層",
-image:"../detail/map/Frenzy boar/Frenzy Boar_floor2.png"
+const root =
+document.getElementById("monster-detail");
+
+root.innerHTML=`
+
+<div class="top-section">
+
+  <div class="left">
+
+    <h1>${data.name}</h1>
+
+    <img src="${data.image}" class="detail-image">
+
+  </div>
+
+  <div class="right">
+
+    <div>Col : ${data.col}</div>
+    <div>EXP : ${data.exp}</div>
+
+    <h2>ドロップ</h2>
+    <div class="drop-list">
+      ${data.drops.map(d=>`<div class="drop-item">${d}</div>`).join("")}
+    </div>
+
+  </div>
+
+</div>
+
+<h2>出現場所</h2>
+
+<div class="map-wrap">
+
+  <div class="map-tabs">
+    ${data.maps.map((m,i)=>
+      `<button onclick="switchMap('${m.image}')">${m.label}</button>`
+    ).join("")}
+  </div>
+
+  <img id="mapImage" src="${data.maps[0].image}" class="map-image">
+
+</div>
+
+<h2>攻撃方法</h2>
+
+<div class="attack-tabs">
+${data.attacks.map(a=>
+`<button onclick='showAttack(${JSON.stringify(JSON.stringify(a))})'>
+➤ ${a.name}
+</button>`
+).join("")}
+</div>
+
+<div id="attackBox"></div>
+`;
+
+showAttack(JSON.stringify(data.attacks[0]));
 }
 
-];
-
-const attacks = [
-
-{
-name:"➤突進",
-video:"../detail/attackvideo/Frenzy Boar/Frenzy Boar_attack1.mp4",
-desc:"一直線に高速突進。横回避推奨"
-},
-
-{
-name:"➤踏みつけ",
-video:"../detail/attackvideo/Frenzy Boar/Frenzy Boar_attack2.mp4",
-desc:"近距離高威力。後方回避"
+function switchMap(src){
+document.getElementById("mapImage").src=src;
 }
 
-];
+function showAttack(raw){
 
-const mapButtons =
-document.getElementById("mapButtons");
+const a=JSON.parse(raw);
 
-const mapImage =
-document.getElementById("mapImage");
+document.getElementById("attackBox").innerHTML=`
+<video controls class="attack-video">
+<source src="${a.video}">
+</video>
 
-maps.forEach((map,i)=>{
-
-const btn=document.createElement("button");
-
-btn.className="switch-btn";
-btn.textContent=map.name;
-
-if(i===0)btn.classList.add("active");
-
-btn.onclick=()=>{
-
-document
-.querySelectorAll("#mapButtons .switch-btn")
-.forEach(b=>b.classList.remove("active"));
-
-btn.classList.add("active");
-
-mapImage.src=map.image;
-
-};
-
-mapButtons.appendChild(btn);
-
-});
-
-const attackButtons =
-document.getElementById("attackButtons");
-
-const attackVideo =
-document.getElementById("attackVideo");
-
-const attackDesc =
-document.getElementById("attackDesc");
-
-function setAttack(data){
-
-attackVideo.src=data.video;
-attackDesc.textContent=data.desc;
-
+<p>${a.desc}</p>
+`;
 }
-
-attacks.forEach((atk,i)=>{
-
-const btn=document.createElement("button");
-
-btn.className="switch-btn";
-btn.textContent=atk.name;
-
-if(i===0){
-btn.classList.add("active");
-setAttack(atk);
-}
-
-btn.onclick=()=>{
-
-document
-.querySelectorAll("#attackButtons .switch-btn")
-.forEach(b=>b.classList.remove("active"));
-
-btn.classList.add("active");
-
-setAttack(atk);
-
-};
-
-attackButtons.appendChild(btn);
-
-});

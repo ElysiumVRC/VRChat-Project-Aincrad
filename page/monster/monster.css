@@ -1,5 +1,8 @@
-:root{
+/* =========================
+   THEME
+========================= */
 
+:root[data-theme="light"]{
   --bg:#ffffff;
   --text:#000000;
 
@@ -9,47 +12,60 @@
   --tag:#ebebeb;
   --tagActive:#000000;
   --tagActiveText:#ffffff;
-
 }
 
+:root[data-theme="dark"]{
+  --bg:#0f0f0f;
+  --text:#ffffff;
 
-/* ===== 基本 ===== */
+  --card:#181818;
+  --border:#2a2a2a;
+
+  --tag:#222222;
+  --tagActive:#ffffff;
+  --tagActiveText:#000000;
+}
+
+/* =========================
+   BASE
+========================= */
+
 html,
 body{
-
   margin:0;
   padding:0;
 
   background:var(--bg);
   color:var(--text);
 
-  font-family:Arial;
-
+  font-family:Arial, sans-serif;
 }
 
-
-/* ===== ページ ===== */
 .monster-page{
   padding:40px;
 }
 
-/* ===== タイトル ===== */
+/* =========================
+   TITLE
+========================= */
+
 .page-title{
   font-size:42px;
   margin-bottom:24px;
   color:var(--text);
 }
 
-/* ===== 検索 ===== */
-.search-box{
+/* =========================
+   SEARCH
+========================= */
 
+.search-box{
   width:100%;
   padding:14px;
 
   margin-bottom:20px;
 
-  border-radius:10px;
-
+  border-radius:12px;
   border:1px solid var(--border);
 
   background:var(--card);
@@ -57,15 +73,24 @@ body{
 
   outline:none;
 
+  transition:
+    border .2s ease,
+    background .2s ease;
 }
 
-/* ===== タグ ===== */
+.search-box:focus{
+  border-color:var(--text);
+}
+
+/* =========================
+   TAGS
+========================= */
+
 .tags{
   margin-bottom:20px;
 }
 
 .tag{
-
   display:inline-block;
 
   padding:6px 12px;
@@ -79,97 +104,129 @@ body{
   cursor:pointer;
   user-select:none;
 
+  transition:.2s ease;
 }
 
 .tag.active{
-
   background:var(--tagActive);
   color:var(--tagActiveText);
-
 }
 
-/* ===== グリッド ===== */
-.monster-grid{
+/* =========================
+   GRID
+========================= */
 
+.monster-grid{
   display:grid;
 
   grid-template-columns:
-  repeat(auto-fill,minmax(320px,1fr));
+    repeat(auto-fill,minmax(320px,1fr));
 
   gap:20px;
-
 }
 
-/* ===== カード ===== */
-.monster-card{
+/* =========================
+   CARD
+========================= */
 
+.monster-card{
   display:block;
 
   text-decoration:none;
+  color:var(--text);
 
   background:var(--card);
-
   border:1px solid var(--border);
 
   border-radius:16px;
-
   overflow:hidden;
 
-  color:var(--text);
-
-  transition:0.2s;
-
+  transition:
+    transform .2s ease,
+    border .2s ease;
 }
 
 .monster-card:hover{
   transform:translateY(-4px);
 }
 
-/* ===== 画像 ===== */
-.monster-image{
+/* =========================
+   IMAGE
+========================= */
 
+.monster-image{
   width:100%;
   height:220px;
 
   object-fit:cover;
-
 }
 
-/* ===== 内容 ===== */
+/* =========================
+   CONTENT
+========================= */
+
 .monster-content{
   padding:16px;
 }
 
-/* ===== 名前 ===== */
+/* =========================
+   NAME
+========================= */
+
 .monster-name{
   font-size:24px;
   margin-bottom:10px;
 }
 
-/* ===== ステータス ===== */
+/* =========================
+   STAT
+========================= */
+
 .monster-stat{
   font-size:14px;
   margin-bottom:6px;
 }
 
-/* ===== ドロップ ===== */
+/* =========================
+   DROP LIST
+========================= */
+
 .drop-list{
   display:flex;
   flex-wrap:wrap;
+
   gap:6px;
   margin-top:10px;
 }
 
 .drop-item{
-
   padding:5px 10px;
 
   border-radius:999px;
 
-  background:rgba(255,255,255,0.08);
-
+  background:var(--tag);
   border:1px solid var(--border);
 
+  color:var(--text);
   font-size:12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:768px){
+
+  .monster-page{
+    padding:20px;
+  }
+
+  .page-title{
+    font-size:32px;
+  }
+
+  .monster-grid{
+    grid-template-columns:1fr;
+  }
 
 }

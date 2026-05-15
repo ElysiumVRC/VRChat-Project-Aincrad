@@ -116,10 +116,16 @@ a.monster-card *{
   color:var(--text) !important;
 }
 
+/* 1:1 IMAGE */
+
 .monster-image{
   width:100%;
-  height:220px;
+
+  aspect-ratio:1/1;
+
   object-fit:cover;
+
+  display:block;
 }
 
 .monster-content{

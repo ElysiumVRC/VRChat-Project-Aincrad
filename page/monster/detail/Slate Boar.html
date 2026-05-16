@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slate Boar</title>
+
+<link rel="stylesheet" href="../../../assets/ui/layout.css">
+<link rel="stylesheet" href="detail.css">
+
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<div class="page-content">
+
+<section class="monster-page">
+
+<h1 class="page-title">Slate Boar</h1>
+
+<div class="container">
+
+    <!-- 上 -->
+    <section class="top">
+
+        <div class="monster-left">
+            <img src="../monsterpng/Slate Boar.png">
+        </div>
+
+        <div class="monster-right">
+            <p><strong>Col:</strong> 50</p>
+            <p><strong>経験値:</strong> 75</p>
+            <p><strong>ドロップ:</strong> Metal Scraps, Quartanier</p>
+        </div>
+
+    </section>
+
+
+    <!-- 階層 -->
+    <section class="floor-section">
+
+        <div class="floor-list">
+
+            <button class="floor-btn"
+            onclick="changeMap('map/Slate Boar_floor1.png')">
+            1階層
+            </button>
+
+            <button class="floor-btn"
+            onclick="changeMap(null)">
+            2階層
+            </button>
+
+        </div>
+
+        <div class="map-box" id="mapBox">
+            マップを選択
+        </div>
+
+    </section>
+
+
+    <!-- 攻撃 -->
+    <section>
+        <h2>モンスターの攻撃方法</h2>
+
+        <div class="attack">
+
+            <div class="attack-header"
+            onclick="toggle(this)">
+            ➤頭突き-1
+            </div>
+
+            <div class="attack-content">
+                <p>プレイヤーが近づくと吹き飛ばす攻撃を行う。後方へノックバックあり。</p>
+
+                <video controls>
+                    <source src="video/Frenzy Boar/Frenzy Boar_atk1.mp4">
+                </video>
+            </div>
+
+        </div>
+
+
+        <div class="attack">
+
+            <div class="attack-header"
+            onclick="toggle(this)">
+            ➤頭突き-2
+            </div>
+
+            <div class="attack-content">
+                <p>一歩前に出て突進する攻撃。上方向へノックバックあり。</p>
+
+                <video controls>
+                    <source src="video/Frenzy Boar/Frenzy Boar_atk2.mp4">
+                </video>
+            </div>
+
+
+             <div class="attack">
+
+            <div class="attack-header"
+            onclick="toggle(this)">
+            ➤後退 → 突進
+            </div>
+
+            <div class="attack-content">
+                <p>一度距離を取り、振り向いてから突進する攻撃。</p>
+
+                <video controls>
+                    <source src="video/Frenzy Boar/Frenzy Boar_atk3.mp4">
+                </video>
+            </div>
+
+        </div>
+
+
+        <div class="attack">
+
+            <div class="attack-header"
+            onclick="toggle(this)">
+            ➤突進
+            </div>
+
+            <div class="attack-content">
+                <p>プレイヤーと距離があると突進してくる攻撃。</p>
+
+                <video controls>
+                    <source src="video/Frenzy Boar/Frenzy Boar_atk4.mp4">
+                </video>
+            </div>
+
+            
+        </div>
+
+    </section>
+
+</div>
+
+</section>
+</div>
+
+<script src="../../../assets/ui/layout.js"></script>
+<script src="detail.js"></script>
+
+<script>
+lucide.createIcons();
+</script>
+
+</body>
+</html>
